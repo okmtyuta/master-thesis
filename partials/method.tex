@@ -1,0 +1,223 @@
+\section{Method}
+
+本セクションでは，Introductionで述べたように，Turingパターンから得られるパーシステンス図のLipschitz連続性について検討する。まずは，パラメータ付けられた一般の反応拡散方程式系を定義して，その方程式系に対して証明したい定理を述べる。そして，Preliminaryで準備した内容をもとにして定理の証明を行う。
+
+\subsection{Problem setting}
+
+$n, d, p$をそれぞれ正の整数とし，$T > 0$を正の実数とする。また，$\Omega = \left[ 0, 1 \right]^d$とする。さらに，$\Lambda$および$\Theta$をそれぞれ$\left( 0, \infty \right)$および$\left( 0, \infty \right)^p$上のコンパクト集合とする。このとき，次の二つの反応拡散方程式系を考える。
+\begin{align}
+  &\begin{dcases}\label{eq:reaction-diffusion-equations-normal}
+    \dfrac{\partial u_i}{\partial t} \left( x, t \right) = \lambda_i \Delta u_i \left( x, t \right) + R_i \left( u_1 \left( x, t \right), \dots, u_n \left( x, t \right); \theta \right), & \left( x, t \right) \in \Omega \times \left( 0, T \right] \\
+    u_i \left( x, 0 \right) = \tilde{u}_i \left( x \right), & x \in \Omega\\
+    1 \leq i \leq n,\\
+  \end{dcases}\\
+  &\begin{dcases}\label{eq:reaction-diffusion-equations-prime}
+    \dfrac{\partial u_i^\prime}{\partial t} \left( x, t \right) = \lambda_i^\prime \Delta u_i^\prime \left( x, t \right) + R_i \left( u_1^\prime \left( x, t \right), \dots, u_n^\prime \left( x, t \right); \theta^\prime \right), & \left( x, t \right) \in \Omega \times \left( 0, T \right] \\
+    u_i^\prime \left( x, 0 \right) = \tilde{u}_i \left( x \right), & x \in \Omega\\
+    1 \leq i \leq n,\\
+  \end{dcases}
+\end{align}
+ただし，$D = \left( \lambda_1, \dots, \lambda_n \right), D^\prime = \left( \lambda_1^\prime, \dots, \lambda_n^\prime \right) \in \Lambda^n$および$\theta, \theta^\prime \in \Theta$は反応拡散方程式系のパラメータであり，$\Omega$の境界条件としては周期境界条件を考える。また，\eqref{eq:reaction-diffusion-equations-normal}および\eqref{eq:reaction-diffusion-equations-prime}の解からなるベクトルをそれぞれ$U = \left( u_1, \dots, u_n \right)$および$U^\prime = \left( u_1^\prime, \dots, u_n^\prime \right)$とする。
+
+このような設定のもとで，$1 \leq i \leq n$に対して，$u_i$および$u_i^\prime$から得られる$q$-パーシステンス図$\mathrm{dgm_q}~u_i$および$\mathrm{dgm_q}~u_i^\prime$の間のボトルネック距離$d_B \left( \mathrm{dgm_q}~u_i, \mathrm{dgm_q}~u_i^\prime \right)$が，モデルパラメータ$D, \theta$および$D^\prime, \theta^\prime$によってどのように評価されるかを調べる。具体的には，次の定理に示すようなLipschitz連続性を証明する。
+
+\begin{thm}\label{thm:main-theorem}
+  $1 \leq i \leq n$とし，$q$を正の整数とする。$\theta, \theta^\prime$に依存しない定数$L_1, L_2, L_3, L_4 \in \mathbb{R}$が存在して，任意の$x \in \Omega$と$0 < t \leq T$に対して，
+  \begin{align}
+    \left\| R_i \left( U \left( x, t \right); \theta \right) - R_i \left( U^\prime \left( x, t \right); \theta^\prime \right) \right\|_\infty
+    &\leq L_1 \left\| \left( U \left( x, t \right) \right)- \left( U^\prime \left( x, t \right) \right)  \right\|_\infty
+    + L_2 \left\| \theta - \theta^\prime \right\|_\infty\\
+    \left\| R_i \left( U \left( x, t \right); \theta \right) \right\|_\infty
+    &\leq L_3,
+    ~\left\| R_i \left( U^\prime \left( x, t \right); \theta^\prime \right) \right\|_\infty
+    \leq L_3,\\
+    \left\| U \left( x, t \right) \right\|_\infty
+    &\leq L_4,
+    ~\left\| U^\prime \left( x, t \right) \right\|_\infty
+    \leq L_4,
+  \end{align}
+  が成り立つならば，$\theta, \theta^\prime$に依存しない定数$M_1, M_2 \in \mathbb{R}$が存在して，任意の$x \in \Omega$と$0 < t \leq T$に対して，
+  \begin{align*}
+    d_B \left( \mathrm{dgm}_q u_i \left( \cdot, t \right), \mathrm{dgm}_q u_i^\prime \left( \cdot, t \right) \right) \leq M_1 \left\| D - D^\prime \right\|_\infty + M_2 \left\| \theta - \theta^\prime \right\|_\infty
+  \end{align*}
+  が成り立つ。
+\end{thm}
+
+この定理は，\eqref{eq:reaction-diffusion-equations-normal}および\eqref{eq:reaction-diffusion-equations-prime}のそれぞれのモデルパラメータの差分$\left\| D - D^\prime \right\|_\infty$および$\left\| \theta - \theta^\prime \right\|_\infty$が十分に小さければ，ボトルネック距離$d_B \left( \mathrm{dgm_q}~u_i, \mathrm{dgm_q}~u_i^\prime \right)$も十分に小さいことを示している。
+
+\subsection{Bounds for solution differences under parameter perturbations}
+
+Theorem \ref{thm:main-theorem}の証明は，Theorem xxxを利用して行う。Theorem xxxを利用するためには，$\left\| u_i \left( \cdot, t \right) - u_i^\prime \left( \cdot, t \right) \right\|_\infty$の評価が必要である。そのため，まずは$\left\| u_i \left( \cdot, t \right) - u_i^\prime \left( \cdot, t \right) \right\|_\infty$から始める。
+
+Preliminaryの議論により，\eqref{eq:reaction-diffusion-equations-normal}および\eqref{eq:reaction-diffusion-equations-prime}の古典解は，
+\begin{align*}
+  u_i \left( \cdot, t \right) &= H_{\lambda_i} \left( t \right) \tilde{u}_i \left( \cdot \right) + \int_0^t H_{\lambda_i} \left( t - s \right) R_i \left( u_1 \left( \cdot, s \right), \dots, u_n \left( \cdot, s \right); \theta \right) ds, \\
+  u_i^\prime \left( \cdot, t \right) &= H_{\lambda_i^\prime} \left( t \right) \tilde{u}_i \left( \cdot \right) + \int_0^t H_{\lambda_i^\prime} \left( t - s \right) R_i \left( u_1 \left( \cdot, s \right), \dots, u_n \left( \cdot, s \right); \theta^\prime \right) ds,
+\end{align*}
+で与えられるから，
+\begin{align*}
+  \left\| u_i \left( \cdot, t \right) - u_i^\prime \left( \cdot, t \right) \right\|_\infty
+  &\leq \left\| \left( H_{\lambda_i} \left( t \right) - H_{\lambda_i^\prime} \left( t \right) \right) \tilde{u}_i \left( \cdot \right) \right\|_\infty\\
+  &\hspace{1cm} + \left\| \int_0^t \left( H_{\lambda_i} \left( t - s \right) R_i \left( U \left( \cdot, t \right); \theta \right) - H_{\lambda_i^\prime} \left( t - s \right) R_i \left( U \left( \cdot, t \right); \theta^\prime \right) \right) \right\|_\infty\\
+  &\leq \left\| \left( H_{\lambda_i} \left( t \right) - H_{\lambda_i^\prime} \left( t \right) \right) \tilde{u}_i \left( \cdot \right) \right\|_\infty \\
+  &\hspace{1cm} + \left\| \int_0^t \left( H_{\lambda_i} \left( t - s \right) - H_{\lambda_i^\prime} \left( t - s \right) \right) R_i \left( U \left( \cdot, t \right); \theta \right) ds \right\|_\infty \\
+  &\hspace{1cm} + \left\| \int_0^t H_{\lambda_i} \left( t - s \right) \left( R_i \left( U \left( \cdot, t \right); \theta \right) - R_i \left( U^\prime \left( \cdot, t \right); \theta^\prime \right) \right) ds \right\|_\infty
+\end{align*}
+となる。したがって，
+\begin{align*}
+  E_1 &= \left\| \left( H_{\lambda_i} \left( t \right) - H_{\lambda_i^\prime} \left( t \right) \right) \tilde{u}_i \left( \cdot \right) \right\|_\infty, \\
+  E_2 &= \left\| \int_0^t \left( H_{\lambda_i} \left( t - s \right) - H_{\lambda_i^\prime} \left( t - s \right) \right) R_i \left( U \left( \cdot, t \right); \theta \right) ds \right\|_\infty, \\
+  E_3 &= \left\| \int_0^t H_{\lambda_i} \left( t - s \right) \left( R_i \left( U \left( \cdot, t \right); \theta \right) - R_i \left( U^\prime \left( \cdot, t \right); \theta^\prime \right) \right) ds \right\|_\infty,
+\end{align*}
+とおけば，$E_1, E_2, E_3$の評価を通して，$\left\| u_i \left( \cdot, t \right) - u_i^\prime \left( \cdot, t \right) \right\|_\infty$の評価が得られる。そこで以下では，$E_1, E_2, E_3$の評価を行っていく。
+
+\begin{lem}
+  $\lambda \in \Lambda$および$0 < t \leq T$とする。このとき，任意の$u \in C_{\mathrm{per}} \left( \Omega \right)$に対して，
+  \begin{align*}
+    \left\| H_{\lambda} \left( t \right) u \right\|_\infty \leq  \left\| u \right\|_\infty
+  \end{align*}
+  が成り立つ。
+\end{lem}
+
+\begin{proof}
+  $H_{\lambda} \left( t \right)$の定義により，$0 < t \leq T$ならば
+  \begin{align*}
+    \left\| H_{\lambda} \left( t \right) u \right\|_\infty
+    & \leq \left\| K_{\lambda, t} * u \right\|_{\infty}\\
+    & \leq \left\| K_{\lambda, t} \right\|_{L_1} \left\| u \right\|_{\infty}\\
+    &= \left\| u \right\|_{\infty}
+  \end{align*}
+  を得る。
+\end{proof}
+
+\begin{lem}
+  任意の$0 < t \leq T$および$\lambda, \lambda^\prime \in \Lambda$に対して，
+  \begin{align*}
+    \left\| K_{\lambda, t} - K_{\lambda^\prime, t} \right\|_{L_1} \leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left| \lambda - \lambda^\prime \right|
+  \end{align*}
+  が成り立つ。さらに，$u \in C_{\mathrm{per}} \left( \Omega \right)$に対して，
+  \begin{align*}
+    \left\| \left( H_{\lambda} \left( t \right) - H_{\lambda^\prime} \left( t \right) \right) u \right\|_{\infty} \leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left| \lambda - \lambda^\prime \right| \left\| u \right\|_\infty
+  \end{align*}
+  が成り立つ。
+\end{lem}
+
+\begin{proof}
+  任意の$0 < t \leq T$と$x \in \mathbb{R}^d$
+  \begin{align*}
+    \dfrac{\partial}{\partial \lambda} g_{\lambda, t} \left( x \right)
+    &= - \dfrac{d}{2} \dfrac{1}{\left( 4 \pi \lambda t \right)^{d / 2 + 1}} 4 \pi t \exp \left( - \dfrac{ \left\| x \right\|^2 }{ 4 \lambda t } \right) + \dfrac{1}{\left( 4 \pi \lambda t \right)^{d / 2}} \exp \left( - \dfrac{ \left\| x \right\|^2 }{ 4 \lambda t } \right) \dfrac{ \left\| x \right\|^2 }{ 4 \lambda^2 t }\\
+    &= \left( - \dfrac{ d }{ 2 \lambda } + \dfrac{ \left\| x \right\|^2 }{ 4 \lambda^2 t } \right) g_{\lambda, t} \left( x \right)
+  \end{align*}
+  となるから，
+  \begin{align*}
+    \left\| \dfrac{\partial}{\partial \lambda} K_{\lambda, t} \right\|_{L^1}
+    &= \left\| \dfrac{\partial}{\partial \lambda} \sum_{k \in \mathbb{Z}^d} g_{\lambda, t} \left( x + k \right) \right\|_{L^1}\\
+    &= \left\| \sum_{k \in \mathbb{Z}^d} \dfrac{\partial}{\partial \lambda} g_{\lambda, t} \left( x + k \right) \right\|_{L^1}\\
+    & \leq \sum_{k \in \mathbb{Z}^d} \left\| \dfrac{\partial}{\partial \lambda} g_{\lambda, t} \left( x + k \right) \right\|_{L^1}\\
+    &= \sum_{k \in \mathbb{Z}^d} \int_{\left[ 0, 1 \right]^d} \left| \dfrac{\partial}{\partial \lambda} g_{\lambda, t} \left( x + k \right) \right| dx\\
+    &= \int_{\mathbb{R}^d} \left| \dfrac{\partial}{\partial \lambda} g_{\lambda, t} \left( x \right) \right| dx\\
+    &\leq \int_{\mathbb{R}^d} \left( \dfrac{d}{2 \lambda} + \dfrac{\left\| x \right\|^2}{4 \lambda^2 t} \right) g_{\lambda, t} \left( x \right) dx\\
+    &= \dfrac{d}{2 \lambda} \int_{\mathbb{R}^d} g_{\lambda, t} \left( x \right) dx + \dfrac{1}{4 \lambda^2 t} \int_{\mathbb{R}^d} \left\| x \right\|^2 g_{\lambda, t} \left( x \right) dx\\
+    &= \dfrac{d}{2 \lambda} + \dfrac{1}{4 \lambda^2 t} 2d \lambda t\\
+    &= \dfrac{d}{\lambda}
+  \end{align*}
+  となる。次に，任意の$\lambda, \lambda^\prime \in \Lambda$に対して，
+  \begin{align*}
+    K_{\lambda, t} \left( x \right) - K_{\lambda^\prime, t} \left( x \right)
+    &= \sum_{k \in \mathbb{Z}^d} \left( g_{\lambda, t} \left( x + k \right) - g_{\lambda^\prime, t} \left( x + k \right) \right)\\
+    &= \sum_{k \in \mathbb{Z}^d} \int_{\lambda^\prime}^{\lambda} \dfrac{\partial}{\partial \tau} g_{\tau, t} \left( x + k \right) d \tau \\
+    &= \int_{\lambda^\prime}^\lambda \sum_{k \in \mathbb{Z}^d} \dfrac{\partial}{\partial \tau} g_{\tau, t} \left( x + k \right) d \tau\\
+    &= \int_{\lambda^\prime}^\lambda \dfrac{\partial}{\partial \tau} K_{\tau, t} \left( x \right) d \tau
+  \end{align*}
+  となるから，
+  \begin{align*}
+    \left\| K_{\lambda, t} - K_{\lambda^\prime, t} \right\|_{L^1}
+    &= \int_{\left[ 0, 1 \right]^d} \left| \int_{\lambda^\prime}^\lambda \dfrac{\partial}{\partial \tau} K_{\tau, t} \left( x \right) d \tau \right| dx\\
+    &\leq \int_{\left[ 0, 1 \right]^d} \int_{\lambda^\prime}^\lambda \left| \dfrac{\partial}{\partial \tau} K_{\tau, t} \left( x \right) \right| d \tau dx\\
+    &= \int_{\lambda^\prime}^\lambda \left\| \dfrac{\partial}{\partial \tau} K_{\tau, t} \left( x \right) \right\|_{L^1} d\tau\\
+    &\leq \sup_{\tau \in \mathcal{\lambda}} \left\| \dfrac{\partial}{\partial \tau} K_{\tau, t} \left( x \right)  \right\|_{L_1} \left| \lambda - \lambda^\prime \right|\\
+    &\leq \sup_{\tau \in \Lambda} \dfrac{d}{\tau} \left| \lambda - 
+    \lambda^\prime \right|\\
+    &= \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left| \lambda - \lambda^\prime \right|
+  \end{align*}
+  を得る。最後に，
+  \begin{align*}
+    \left\| \left( H_{\lambda} \left( t \right) - H_{\lambda^\prime} \left( t \right) \right) u \right\|_{\infty}
+    &\leq \left\| K_{\lambda, t} - K_{\lambda^\prime, t} \right\|_{L^1} \left\| u \right\|_\infty\\
+    &\leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left| \lambda - \lambda^\prime \right| \left\| u \right\|_\infty
+  \end{align*}
+  を得る。
+\end{proof}
+
+% \begin{lem}
+%   $\theta, \theta^\prime$に依存しない定数$M_1, M_2 \in \mathbb{R}$が存在して，任意の$1 \leq i \leq n$および$x \in \Omega$と$0 < t \leq T$に対して，
+%   \begin{align*}
+%     \left\| u_i \left( x, t \right) - u_i^\prime \left( x, t \right) \right\|_\infty \leq M_1 \left\| \mathcal{D} - \mathcal{D}^\prime \right\|_\infty + M_2 \left\| \theta - \theta^\prime \right\|
+%   \end{align*}
+%   が成り立つ。
+% \end{lem}
+
+% \begin{proof}
+%   Theorem XXXによって，任意の$\left( x, t \right) \in \Omega \times \left[ 0, T \right)$に対して，
+%   \begin{align*}
+%     \left\| u_i \left( x, t \right) - u_i^\prime \left( x, t \right) \right\|_\infty
+%     &\leq \left\| \left( e^{t D_i \Delta} - e^{t D_i^\prime \Delta} \right) \tilde{u}_i \left( x \right) \right\|_\infty\\
+%     &\hspace{1cm} + \left\| \int_0^t \left( e^{\left( t - s \right) D_i \Delta} R_i \left( U \left( x, t \right); \theta \right) - e^{\left( t - s \right) D_i^\prime \Delta} R_i \left( U \left( x, t \right); \theta^\prime \right) \right) \right\|_\infty\\
+%     &\leq \left\| \left( e^{t D_i \Delta} - e^{t D_i^\prime \Delta} \right) \tilde{u}_i \left( x \right) \right\|_\infty\\
+%     &\hspace{1cm} + \left\| \int_0^t \left( e^{\left(t - s\right)D_i\Delta} - e^{\left(t - s\right)D_i^\prime\Delta} \right) R_i \left( U \left( x, t \right); \theta \right) ds \right\|_\infty \\
+%     &\hspace{1cm} + \left\| \int_0^t e^{\left( t - s \right)D_i^\prime\Delta} \left( R_i \left( U \left( x, t \right); \theta \right) - R_i \left( U^\prime \left( x, t \right); \theta^\prime \right) \right) ds \right\|_\infty
+%   \end{align*}
+%   となる。まず，第1項について，
+%   \begin{align*}
+%     \left\| \left( e^{t D_i \Delta} - e^{t D_i^\prime \Delta} \right) \tilde{u}_i \right\|_\infty
+%     &\leq \dfrac{d}{\inf \mathcal{D}} \left| D_i - D_i^\prime \right| \left\| \tilde{u}_i \right\|_\infty\\
+%     &\leq \dfrac{d}{\inf \mathcal{D}} \left| D_i - D_i^\prime \right| L_4
+%   \end{align*}
+%   となる。次に，第2項について，
+%   \begin{align*}
+%     \left\| \int_0^t \left( e^{\left(t - s\right)D_i\Delta} - e^{\left(t - s\right)D_i^\prime\Delta} \right) R_i \left( U \left( x, t \right); \theta \right) ds \right\|_\infty
+%     &\leq \int_0^t \left\| \left( e^{\left(t - s\right)D_i\Delta} - e^{\left(t - s\right)D_i^\prime\Delta} \right) R_i \left( U \left( x, t \right); \theta \right) \right\|_\infty ds\\
+%     &\leq \int_0^t \dfrac{d}{\inf \mathcal{D}} \left| D_i - D_i^\prime \right| \left\| R_i \left( U \left( x, t \right); \theta \right) \right\|_\infty ds\\
+%     &\leq \int_0^t \dfrac{d}{\inf \mathcal{D}} \left| D_i - D_i^\prime \right| L_3 ds\\
+%     &\leq T \left| D_i - D_i^\prime \right| L_3 \\
+%   \end{align*}
+%   となる。最後に，第3項について，
+%   \begin{align*}
+%     &\left\| \int_0^t e^{\left( t - s \right)D_i^\prime\Delta} \left( R_i \left( U \left( x, t \right); \theta \right) - R_i \left( U^\prime \left( x, t \right); \theta^\prime \right) \right) ds \right\|_\infty\\
+%     &\hspace{2cm}\leq \int_0^t \left\|  e^{\left( t - s \right)D_i^\prime\Delta} \left( R_i \left( U \left( x, t \right); \theta \right) - R_i \left( U^\prime \left( x, t \right); \theta^\prime \right) \right) \right\|_\infty ds\\
+%     &\hspace{2cm}\leq \int_0^t \left\| R_i \left( U \left( x, t \right); \theta \right) - R_i \left( U^\prime \left( x, t \right); \theta^\prime \right) \right\|_\infty ds\\
+%     &\hspace{2cm}\leq \int_0^t \left( L_1 \left\| U \left( x, t \right)  - U^\prime \left( x, t \right) \right\|_\infty + L_2 \left\| \theta - \theta^\prime \right\|_\infty \right) ds\\
+%     &\hspace{2cm}\leq L_1 \int_0^t \left\| U \left( x, t \right)  - U^\prime \left( x, t \right) \right\|_\infty ds + T L_2 \left\| \theta - \theta^\prime \right\|_\infty
+%   \end{align*}
+%   となる。したがって，
+%   \begin{align*}
+%     \left\| u_i \left( x, t \right) - u_i^\prime \left( x, t \right) \right\|_\infty
+%     &\leq \dfrac{d}{\inf \mathcal{D}} \left| D_i - D_i^\prime \right| L_4
+%     + T \left| D_i - D_i^\prime \right| L_3 + T L_2 \left\| \theta - \theta^\prime \right\|_\infty\\
+%     &\hspace{1cm} + L_1 \int_0^t \left\| U \left( x, t \right)  - U^\prime \left( x, t \right) \right\|_\infty ds\\
+%     &\leq \left( \dfrac{d}{\inf \mathcal{D}} + TL_3 \right) \left| D_i - D_i^\prime \right| L_4 + T L_2 \left\| \theta - \theta^\prime \right\|_\infty\\
+%     &\hspace{1cm} + L_1 \int_0^t \left\| U \left( x, t \right)  - U^\prime \left( x, t \right) \right\|_\infty ds
+%   \end{align*}
+%   となるから，
+%   \begin{align*}
+%     \left\| U \left( x, t \right)  - U^\prime \left( x, t \right) \right\|_\infty
+%     &\leq \left( \dfrac{d}{\inf \mathcal{D}} + TL_3 \right) \left\| \mathbf{D} - \mathbf{D}^\prime \right\|_\infty L_4 + n T L_2 \left\| \theta - \theta^\prime \right\|_\infty\\
+%     &\hspace{1cm} + n L_1 \int_0^t \left\| U \left( x, t \right)  - U^\prime \left( x, t \right) \right\|_\infty ds
+%   \end{align*}
+%   ここにGronwallの不等式を用いれば，
+%   \begin{align*}
+%     \left\| U \left( x, t \right)  - U^\prime \left( x, t \right) \right\|_\infty
+%     &\leq \left[ \left( \dfrac{d}{\inf \mathcal{D}} + TL_3 \right) L_4 \left\| \mathbf{D} - \mathbf{D}^\prime \right\|_\infty + n T L_2 \left\| \theta - \theta^\prime \right\|_\infty \right] e^{n L_1 T}
+%   \end{align*}
+%   を得る。ここで，
+%   \begin{align*}
+%     M_1 &= \left( \dfrac{d}{\inf \mathcal{D}} + TL_3 \right) L_4 e^{n L_1 T},\\
+%     M_2 &= n T L_2 e^{n L_1 T}
+%   \end{align*}
+%   とおくことにより，
+%   \begin{align*}
+%     \left\| u_i \left( x, t \right) - u_i^\prime \left( x, t \right) \right\|_\infty \leq M_1 \left\| \mathbf{D} - \mathbf{D}^\prime \right\|_\infty + M_2 \left\| \theta - \theta^\prime \right\|
+%   \end{align*}
+%   を得る。
+% \end{proof}
