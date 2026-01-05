@@ -1,9 +1,103 @@
-\subsection{Reaction-diffusion equations and Turing pattern}
+\subsection{Turing pattern}
 
-\begin{align}\label{eq:general-reaction-diffusion-equations}
-  \begin{dcases}
-    \dfrac{\partial u_i}{\partial t} \left( x, t \right) = \lambda_i \Delta u_i \left( x, t \right) + R_i \left( u_1 \left( x, t \right), \dots, u_n \left( x, t \right) \right), & \left( x, t \right) \in \Omega \times \left( 0, T \right] \\
-    u_i \left( x, 0 \right) = \tilde{u}_i \left( x \right), & x \in \Omega\\
-    1 \leq i \leq n,\\
+\subsubsection{Turing pattern and reaction-diffusion equations}
+
+% In 1952, A. M. Turing mathematically showed that, under idealized conditions, hypothetical chemical substances known as morphogens can mutually regulate each other's production, thereby forming characteristic spatial patterns in their concentration distributions \cite{turing1990chemical}. Such phenomena are generally modeled by reaction-diffusion systems of the form
+% \begin{align}
+%   &\begin{dcases}\label{eq:general-reaction-diffusion-equations}
+%     \dfrac{\partial u_i}{\partial t} = \lambda_i \Delta u_i + R_i \left( u_1 , \dots, u_n \right), \\
+%     1 \leq i \leq n,\\
+%   \end{dcases}
+% \end{align}
+% where $u_i$ denotes the concentration of each morphogen, and $\lambda_i$ is the diffusion coefficient of $u_i$, which quantifies the strength of its diffusion. In this system, the term $\lambda_i \Delta u_i \left( x, t \right)$ in \eqref{eq:general-reaction-diffusion-equations} describes diffusive transport of morphogens, while $R_i \left( u_1 \left( x, t \right), \dots, u_n \left( x, t \right) \right)$ represents their chemical reactions. Turing patterns are spatially heterogeneous patterns that arise in reaction--diffusion systems via diffusion-driven instability of a homogeneous steady state.
+
+In 1952, A. M. Turing mathematically showed, under idealized conditions, that spontaneous spatial patterns can emerge from a homogeneous state through the interaction and diffusion of hypothetical chemical substances known as morphogens \cite{turing1990chemical}. Such phenomena are commonly modeled by the following reaction--diffusion system:
+\begin{align}
+  &\begin{dcases}\label{eq:general-reaction-diffusion-equations}
+    \dfrac{\partial u_i}{\partial t} = \lambda_i \Delta u_i + R_i \left( u_1 , \dots, u_n \right), \\
+    1 \leq i \leq n,
   \end{dcases}
 \end{align}
+where $u_i$ denotes the concentration of the $i$-th morphogen, and $\lambda_i$ is the diffusion coefficient of $u_i$, quantifying the strength of its diffusion. In \eqref{eq:general-reaction-diffusion-equations}, the term $\lambda_i \Delta u_i(x,t)$ describes diffusive transport, while $R_i \left(u_1(x,t),\dots,u_n(x,t)\right)$ represents the chemical reactions. Spatially heterogeneous patterns that arise in reaction--diffusion systems via diffusion-driven instability of a homogeneous steady state are called Turing patterns.
+
+Whether biological body-surface patterns can indeed be explained by Turing patterns had long been a matter of debate. In 1995, however, Kondo and Asai demonstrated that developmental changes in the skin pattern of Pomacanthus fish can be explained by a Turing pattern mechanism. This study supported Turing patterns as an important mathematical model for understanding the emergence of biological body patterns.
+
+Turing patterns are now known to account for a wide variety of biological surface patterns beyond those of Pomacanthus. For example, several studies have reproduced the skin patterns of zebras, leopards, jaguars, and pufferfish using Turing-type reaction-diffusion models \cite{kondo1995reaction, gravan2004evolving, liu2006two, de2020leopard}. 
+
+\subsubsection{Gray--Scott model}
+
+% P. Gray and S. K. Scott analyzed autocatalytic processes in continuous flow stirred tank reactor (CSTR) systems in \cite{gray1983autocatalytic, gray1984autocatalytic}. This autocatalytic mechanism, with reactants $U_1$ and $U_2$ and product $P$, can be described by the following chemical reactions:
+% \begin{align}
+%   U_1 + 2U_2 &\to 3U_2, \label{eq:gs-mutula-reaction} \\
+%   U_2 &\to P. \label{eq:gs-productive-reaction}
+% \end{align}
+% Here, the volume of the reactor is assumed to be constant and equal to $V$. We assume that a reactant $U_1$ with concentration $c$ flows into the reactor at a volumetric flow rate $q$ per unit time. Let $k_1$ and $k_2$ denote the reaction rate constants of reactions \eqref{eq:gs-mutula-reaction} and \eqref{eq:gs-productive-reaction}, respectively, and let $u_1^*$ and $u_2^*$ denote the concentrations of reactants $U_1$ and $U_2$ in the reactor, respectively. Then, including diffusion, the time evolution of $u_1^*$ and $u_2^*$ with respect to time $t^*$ in the reactor is given by
+% \begin{align*}
+%   \begin{dcases}
+%     \dfrac{\partial u_1^*}{\partial t^*} = \lambda_1^* \Delta u_1^* - k_1 {u_1^*}{u_2^*}^2 + \dfrac{q}{V} \left( c - u_1^* \right) ,\\
+%     \dfrac{\partial u_2^*}{\partial t^*} = \lambda_2^* \Delta u_2^* + k_1 {u_1^*}{u_2^*}^2 - k_2 u_2^* + \dfrac{q}{V} \left( 0 - u_2^* \right).
+%   \end{dcases}
+% \end{align*}
+% Here, introducing the nondimensional variables and parameters
+% \begin{align*}
+% u_1 = \dfrac{u_1^*}{c}, ~
+% u_2 = \dfrac{u_2^*}{c}, ~
+% t = k_1 c^2 t^*, ~
+% F = \dfrac{q / V}{k_1 c^2}, ~
+% k = \dfrac{k_2}{k_1 c^2}, ~
+% \lambda_1 = \dfrac{\lambda_1^*}{k_1 c^2}, ~
+% \lambda_2 = \dfrac{\lambda_2^*}{k_1 c^2},
+% \end{align*}
+% then we obtain
+% \begin{align}
+%   \begin{dcases}\label{eq:general-gray-scott}
+%   \dfrac{\partial u_1}{\partial t} = \lambda_1 \Delta u_1 - u_1 u_2^2 + F \left( 1 - u_1 \right),\\
+%   \dfrac{\partial u_2}{\partial t} = \lambda_2 \Delta u_2 + u_1 u_2^2 - \left( F + k \right) u_2.
+%   \end{dcases}
+% \end{align}
+
+% The system \eqref{eq:general-gray-scott} is known as the Gray--Scott model, a prototypical reaction-diffusion system that generates Turing-type patterns. Pearson \cite{pearson1993complex} demonstrated that the Gray--Scott model produces an extremely rich variety of spatiotemporal patterns depending on the choice of parameters $\left( F, k \right)$ Examples of Turing patterns generated by the Gray-Scott model are shown in Figure~XXX. These patterns offer important insights into the role of Turing mechanisms in biological morphogenesis.
+
+P.~Gray and S.~K.~Scott analyzed autocatalytic processes in continuous-flow stirred-tank reactor (CSTR) systems \cite{gray1983autocatalytic,gray1984autocatalytic}. The autocatalytic mechanism, considered by Gray and Scott, involving reactants $U_1$ and $U_2$ and an inert product $P$ is described by the reactions:
+\begin{align}
+  U_1 + 2U_2 &\to 3U_2, \label{eq:gs-autocatalytic-reaction}\\
+  U_2 &\to P. \label{eq:gs-decay-reaction}
+\end{align}
+Here, assume that the reactor volume is constant and equal to $V$, and that $U_1$ is supplied to the reactor at concentration $c$ with volumetric flow rate $q$. Let $k_1$ and $k_2$ denote the reaction rate constants in \eqref{eq:gs-autocatalytic-reaction} and \eqref{eq:gs-decay-reaction}, respectively, and let $u_1^*$ and $u_2^*$ denote the concentrations of $U_1$ and $U_2$. Including diffusion of the reactants, the evolution of $u_1^*$ and $u_2^*$ is given by
+\begin{align}
+  \begin{dcases}\label{eq:gs-dimensional}
+    \dfrac{\partial u_1^*}{\partial t^*} = \lambda_1^* \Delta u_1^* - k_1 u_1^* (u_2^*)^2 + \dfrac{q}{V}\left(c-u_1^*\right),\\
+    \dfrac{\partial u_2^*}{\partial t^*} = \lambda_2^* \Delta u_2^* + k_1 u_1^* (u_2^*)^2 - k_2 u_2^* - \dfrac{q}{V}u_2^* .
+  \end{dcases}
+\end{align}
+Here $\lambda_i^*$ are diffusion coefficients. We nondimensionalize the system by introducing
+\begin{align*}
+  u_1 = \dfrac{u_1^*}{c},~
+  u_2 = \dfrac{u_2^*}{c},~
+  t = k_1 c^2 t^*,~
+  x = \dfrac{x^*}{L},
+\end{align*}
+and the dimensionless parameters
+\begin{align*}
+  F = \dfrac{q/V}{k_1 c^2},~
+  k = \dfrac{k_2}{k_1 c^2},~
+  \lambda_1 = \dfrac{\lambda_1^*}{k_1 c^2 L^2},~
+  \lambda_2 = \dfrac{\lambda_2^*}{k_1 c^2 L^2},
+\end{align*}
+where $L$ is a characteristic length scale. 
+Then \eqref{eq:gs-dimensional} becomes
+\begin{align}
+  \begin{dcases}\label{eq:general-gray-scott}
+    \dfrac{\partial u_1}{\partial t} = \lambda_1 \Delta u_1 - u_1 u_2^2 + F(1-u_1),\\
+    \dfrac{\partial u_2}{\partial t} = \lambda_2 \Delta u_2 + u_1 u_2^2 - (F+k)u_2.
+  \end{dcases}
+\end{align}
+
+The system \eqref{eq:general-gray-scott} is known as the Gray--Scott model, a prototypical reaction--diffusion system that exhibits Turing-type pattern formation. 
+Pearson \cite{pearson1993complex} showed that the Gray--Scott model produces a rich variety of spatiotemporal patterns depending on the parameter choice $(F,k)$. 
+Examples of patterns generated by \eqref{eq:general-gray-scott} are shown in Figure~XXX. 
+These patterns provide useful insights into diffusion-driven pattern formation in reaction--diffusion systems.
+
+
+{\color{red}[TODO]Gray--Scottが生成するパターンの画像を用意する}
+

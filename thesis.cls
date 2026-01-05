@@ -26,7 +26,7 @@
 \RequirePackage{tcolorbox}
 \RequirePackage{ascmac}
 \RequirePackage{fancyhdr, multicol, setspace, lastpage}
-\RequirePackage[top=15truemm,bottom=15truemm,left=15truemm,right=15truemm]{geometry}
+\RequirePackage[top=15truemm,bottom=20truemm,left=15truemm,right=15truemm]{geometry}
 
 % ===== Code & algorithms =====
 \RequirePackage{listings}
@@ -69,4 +69,4 @@
 \newtheorem{eg}[dfn]{Example}
 \newtheorem{rem}[dfn]{Remark}
 
-\renewcommand{\labelenumii}{(\arabic{enumii})}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
