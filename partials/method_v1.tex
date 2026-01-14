@@ -17,12 +17,12 @@ Let $n, d, q$ be positive integers and let $T > 0$ be a positive real number. Se
     1 \leq i \leq n,\\
   \end{dcases}
 \end{align}
-where $D = \left( \lambda_1, \dots, \lambda_n \right), D^\prime = \left( \lambda_1^\prime, \dots, \lambda_n^\prime \right) \in \Lambda^n$ and $\theta, \theta^\prime \in \Theta$ are parameters of the systems. We impose periodic boundary conditions on $\Omega$. We also denote by $U = \left( u_1, \dots, u_n \right)$ and $U^\prime = \left( u_1^\prime, \dots, u_n^\prime \right)$ the vector-valued solutions of \eqref{eq:reaction-diffusion-equations-normal} and \eqref{eq:reaction-diffusion-equations-prime}, respectively.
+where $D = \left( \lambda_1, \dots, \lambda_n \right), D^\prime = \left( \lambda_1^\prime, \dots, \lambda_n^\prime \right) \in \Lambda^n$ and $\theta, \theta^\prime \in \Theta$ are parameters of the systems. We impose periodic boundary conditions on $\Omega$. We also denote by $U = \left( u_1, \dots, u_n \right)$ and $U^\prime = \left( u_1^\prime, \dots, u_n^\prime \right)$ the vector-valued solutions of \eqref{eq:reaction-diffusion-equations-normal} and \eqref{eq:reaction-diffusion-equations-prime}, respectively. Furthermore, we define $\left\| U \right\|_\infty = \max \set{ \left\| u_1 \right\|_\infty, \cdots, \left\| u_n \right\|_\infty }$.
 
 Under this setting, for each $1 \leq i \leq n$, we investigate how the bottleneck distance between the $p$-dimensional persistence diagrams $\mathrm{dgm}_p~u_i \left( \cdot, t \right)$ and $\mathrm{dgm}_p~u_i^\prime \left( \cdot, t \right)$, obtained from $u_i \left( \cdot, t \right)$ and $u_i^\prime \left( \cdot, t \right)$, can be controlled in terms of the model parameters $D, \theta$ and $D^\prime, \theta^\prime$. More precisely, we establish the following Lipschitz continuity.
 
 \begin{thm}\label{thm:main-theorem}
-  Let $1 \leq i \leq n$, and let $p \geq 0$ be an integer. Suppose that, there exist constants $L_1, L_2, L_3, L_4 \in \mathbb{R}$ independent of $D, D^\prime$ and $\theta, \theta^\prime$, such that for all $x \in \Omega$ and $0 \leq t \leq T$,
+  Let $1 \leq i \leq n$, and let $p$ be a positive integer. Suppose that, for all $0 < t \leq T$, there exist constants $L_1, L_2, L_3 \in \mathbb{R}$ independent of $D, D^\prime$ and $\theta, \theta^\prime$, such that for all $x \in \Omega$ and $0 < t \leq T$,
   \begin{align}
     \left\| R_i \left( U \left( \cdot, t \right); \theta \right) - R_i \left( U^\prime \left( \cdot, t \right); \theta^\prime \right) \right\|_\infty
     &\leq L_1 \left\| \left( U \left( \cdot, t \right) \right)- \left( U^\prime \left( \cdot, t \right) \right)  \right\|_\infty\label{eq:reaction-lip}
@@ -30,15 +30,11 @@ Under this setting, for each $1 \leq i \leq n$, we investigate how the bottlenec
     \left\| R_i \left( U \left( \cdot, t \right); \theta \right) \right\|_\infty
     &\leq L_3, \label{eq:reaction-bound}
     ~\left\| R_i \left( U^\prime \left( \cdot, t \right); \theta^\prime \right) \right\|_\infty
-    \leq L_3,\\
-    \left\| U \left( \cdot, t \right) \right\|_\infty
-    &\leq L_4,
-    ~\left\| U^\prime \left( \cdot, t \right) \right\|_\infty
-    \leq L_4,\label{eq:state-bound}
+    \leq L_3,
   \end{align}
-  then, for all $0 \leq t \leq T$, there exist constants $M_1 \left( t \right), M_2 \left( t \right) \in \mathbb{R}$, independent of $D, D^\prime$ and $\theta, \theta^\prime$, such that,
+  then, for all $0 < t \leq T$, there exist constants $M_1, M_2 \in \mathbb{R}$, independent of $D, D^\prime$ and $\theta, \theta^\prime$, such that,
   \begin{align}\label{eq:inequality-main-theorem}
-    d_B \left( \mathrm{dgm}_p u_i \left( \cdot, t \right), \mathrm{dgm}_p u_i^\prime \left( \cdot, t \right) \right) \leq M_1 \left( t \right) \left\| D - D^\prime \right\|_\infty + M_2 \left( t \right) \left\| \theta - \theta^\prime \right\|_\infty.
+    d_B \left( \mathrm{dgm}_p u_i \left( \cdot, t \right), \mathrm{dgm}_p u_i^\prime \left( \cdot, t \right) \right) \leq M_1 \left\| D - D^\prime \right\|_\infty + M_2 \left\| \theta - \theta^\prime \right\|_\infty.
   \end{align}
 \end{thm}
 
@@ -49,14 +45,14 @@ This theorem shows that if the differences between the model parameters, $\left\
 The proof of Theorem \ref{thm:main-theorem} is based on Theorem \ref{thm:stability}. In order to apply Theorem \ref{thm:stability}, we first need an estimate for $\left\| u_i \left( \cdot, t \right) - u_i^\prime \left( \cdot, t \right) \right\|_\infty$. To this end, we prepare several auxiliary lemmas.
 
 \begin{lem}\label{lem:contraction}
-  Let $\lambda \in \Lambda$ and $0 \leq t \leq T$. Then for any $u \in C_{\mathrm{per}} \left( \Omega \right)$, we have
+  Let $\lambda \in \Lambda$ and $0 < t \leq T$. Then for any $u \in C_{\mathrm{per}} \left( \Omega \right)$, we have
   \begin{align*}
     \left\| H_{\lambda} \left( t \right) u \right\|_\infty \leq  \left\| u \right\|_\infty.
   \end{align*}
 \end{lem}
 
 \begin{proof}
-  This is obvious at $t = 0$. By the definition of $H_{\lambda} \left( t \right)$ , for $0 < t \leq T$, we have
+  By the definition of $H_{\lambda} \left( t \right)$ , for $0 < t \leq T$, we have
   \begin{align*}
     \left\| H_{\lambda} \left( t \right) u \right\|_\infty
     & \leq \left\| K_{\lambda, t} * u \right\|_{\infty}\\
@@ -66,7 +62,7 @@ The proof of Theorem \ref{thm:main-theorem} is based on Theorem \ref{thm:stabili
 \end{proof}
 
 \begin{lem}\label{lem:heat-kernel-lip}
-  For any $0 \leq t \leq T$ and $\lambda, \lambda^\prime \in \Lambda$, we have
+  For any $0 < t \leq T$ and $\lambda, \lambda^\prime \in \Lambda$, we have
   \begin{align*}
     \left\| K_{\lambda, t} - K_{\lambda^\prime, t} \right\|_{L^1} \leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left| \lambda - \lambda^\prime \right|.
   \end{align*}
@@ -77,7 +73,7 @@ The proof of Theorem \ref{thm:main-theorem} is based on Theorem \ref{thm:stabili
 \end{lem}
 
 \begin{proof}
-  This is obvious at $t = 0$. For any $0 < t \leq T$ and $x \in \mathbb{R}^d$
+  For any $0 < t \leq T$ and $x \in \mathbb{R}^d$
   \begin{align*}
     \dfrac{\partial}{\partial \lambda} g_{\lambda, t} \left( x \right)
     &= - \dfrac{d}{2} \dfrac{1}{\left( 4 \pi \lambda t \right)^{d / 2 + 1}} 4 \pi t \exp \left( - \dfrac{ \left\| x \right\|^2 }{ 4 \lambda t } \right) + \dfrac{1}{\left( 4 \pi \lambda t \right)^{d / 2}} \exp \left( - \dfrac{ \left\| x \right\|^2 }{ 4 \lambda t } \right) \dfrac{ \left\| x \right\|^2 }{ 4 \lambda^2 t }\\
@@ -127,15 +123,15 @@ The proof of Theorem \ref{thm:main-theorem} is based on Theorem \ref{thm:stabili
 Combining the above estimates, we obtain the following bound for $\left\| u_i \left( \cdot, t \right) - u_i^\prime \left( \cdot, t \right) \right\|_\infty$.
 
 \begin{prop}\label{prop:bound-for-solution-diff}
-  For all $0 \leq t \leq T$, there exist constants $M_1 \left( t \right), M_2 \left( t \right) \in \mathbb{R}$, independent of $D, D^\prime$ and $\theta, \theta^\prime$, such that
+  For all $0 < t \leq T$, there exist constants $M_1, M_2 \in \mathbb{R}$, independent of $D, D^\prime$ and $\theta, \theta^\prime$, such that
   \begin{align*}
     \left\| U \left( \cdot, t \right) - U^\prime \left( \cdot, t \right) \right\|_\infty
-    \leq M_1 \left\| D - D^\prime \right\|_\infty + M_2 \left( t \right) \left\| \theta - \theta^\prime \right\|_\infty.
+    \leq M_1 \left\| D - D^\prime \right\|_\infty + M_2 \left\| \theta - \theta^\prime \right\|_\infty.
   \end{align*}
 \end{prop}
 
 \begin{proof}
-  Since it is obvious at $t = 0$, we consider the case $t > 0$. By the arguments in the Preliminary section, the classical solutions of \eqref{eq:reaction-diffusion-equations-normal} and \eqref{eq:reaction-diffusion-equations-prime} are given by
+  By the arguments in the Preliminary section, the classical solutions of \eqref{eq:reaction-diffusion-equations-normal} and \eqref{eq:reaction-diffusion-equations-prime} are given by
   \begin{align*}
     u_i \left( \cdot, t \right) &= H_{\lambda_i} \left( t \right) \tilde{u}_i \left( \cdot \right) + \int_0^t H_{\lambda_i} \left( t - s \right) R_i \left( u_1 \left( \cdot, s \right), \dots, u_n \left( \cdot, s \right); \theta \right) ds, \\
     u_i^\prime \left( \cdot, t \right) &= H_{\lambda_i^\prime} \left( t \right) \tilde{u}_i \left( \cdot \right) + \int_0^t H_{\lambda_i^\prime} \left( t - s \right) R_i \left( u_1^\prime \left( \cdot, s \right), \dots, u_n^\prime \left( \cdot, s \right); \theta^\prime \right) ds.
@@ -157,12 +153,12 @@ Combining the above estimates, we obtain the following bound for $\left\| u_i \l
   \end{align*}
   then, by estimating $E_{i, 1}$, $E_{i, 2}$, and $E_{i, 3}$, we obtain the desired bound for $\left\| u_i \left( \cdot, t \right) - u_i^\prime \left( \cdot, t \right) \right\|_\infty$. We now proceed to estimate $E_{i, 1}, E_{i, 2}, E_{i, 3}$.
 
-  First, by \eqref{eq:state-bound} and Lemma \ref{lem:heat-kernel-lip},
+  First, by Lemma \ref{lem:heat-kernel-lip},
   \begin{align*}
     E_{i, 1}
     &= \left\| \left( H_{\lambda_i} \left( t \right) - H_{\lambda_i^\prime} \left( t \right) \right) \tilde{u}_i \left( \cdot \right) \right\|_\infty \\
     &\leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left| \lambda_i - \lambda_i^\prime \right| \left\| \tilde{u}_i \left( \cdot \right) \right\|_\infty \\
-    &\leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left| \lambda_i - \lambda_i^\prime \right| L_4.
+    &\leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left| \lambda_i - \lambda_i^\prime \right| \left\|  \right\|_\infty. \\
   \end{align*}
   Next, by \eqref{eq:reaction-bound} and Lemma \ref{lem:heat-kernel-lip},
   \begin{align*}
@@ -184,27 +180,27 @@ Combining the above estimates, we obtain the following bound for $\left\| u_i \l
   \begin{align*}
     \left\| u_i \left( \cdot, t \right) - u_i^\prime \left( \cdot, t \right) \right\|_\infty
     &\leq E_{i, 1} + E_{i, 2} + E_{i, 3}\\
-    &\leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left( L_4 + L_3 t \right) \left| \lambda_i - \lambda_i^\prime \right| + L_2 t \left\| \theta - \theta^\prime \right\|_\infty + L_1 \int_0^t \left\| U \left( \cdot, s \right) - U^\prime \left( \cdot, s \right) \right\|_\infty ds.
+    &\leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left( \left\| \tilde{u}_i \right\|_\infty + L_3 t \right) \left| \lambda_i - \lambda_i^\prime \right| + L_2 t \left\| \theta - \theta^\prime \right\|_\infty + L_1 \int_0^t \left\| U \left( \cdot, s \right) - U^\prime \left( \cdot, s \right) \right\|_\infty ds.
   \end{align*}
   Therefore, we have
   \begin{align*}
     \left\| U \left( \cdot, t \right) - U^\prime \left( \cdot, t \right) \right\|_\infty
-    &\leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left( L_4 + L_3 t \right) \left\| D - D^\prime \right\|_\infty + L_2 t \left\| \theta - \theta^\prime \right\|_\infty + L_1 \int_0^t \left\| U \left( \cdot, s \right) - U^\prime \left( \cdot, s \right) \right\|_\infty ds.
+    &\leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left( \left\| \tilde{u}_i \right\|_\infty + L_3 t \right) \left\| D - D^\prime \right\|_\infty + L_2 t \left\| \theta - \theta^\prime \right\|_\infty + L_1 \int_0^t \left\| U \left( \cdot, s \right) - U^\prime \left( \cdot, s \right) \right\|_\infty ds.
   \end{align*}
   By Gronwall's inequality \cite{henry2006geometric}, we obtain
   \begin{align*}
     \left\| U \left( \cdot, t \right) - U^\prime \left( \cdot, t \right) \right\|_\infty
-    &\leq \left\{ \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left( L_4 + L_3 t \right) \left\| D - D^\prime \right\|_\infty + L_2 t \left\| \theta - \theta^\prime \right\|_\infty \right\} e^{L_1 t}.
+    &\leq \left\{ \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left( \left\| \tilde{u}_i \right\|_\infty + L_3 t \right) \left\| D - D^\prime \right\|_\infty + L_2 t \left\| \theta - \theta^\prime \right\|_\infty \right\} e^{L_1 t}.
   \end{align*}
   By setting
   \begin{align*}
-    M_1 \left( t \right) &= \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left( L_4 + L_3 t \right) e^{L_1 t}, \\
-    M_2 \left( t \right) &= L_2 t e^{L_1 t},
+    M_1 &= \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left( \left\| \tilde{U} \right\|_\infty + L_3 t \right) e^{L_1 t}, \\
+    M_2 &= L_2 t e^{L_1 t},
   \end{align*}
   we obtain
   \begin{align*}
     \left\| U \left( \cdot, t \right) - U^\prime \left( \cdot, t \right) \right\|_\infty
-    \leq M_1 \left( t \right) \left\| D - D^\prime \right\|_\infty + M_2 \left( t \right) \left\| \theta - \theta^\prime \right\|_\infty.
+    \leq M_1 \left\| D - D^\prime \right\|_\infty + M_2 \left\| \theta - \theta^\prime \right\|_\infty.
   \end{align*}
 \end{proof}
 
@@ -214,7 +210,7 @@ Combining Proposition \ref{prop:bound-for-solution-diff} with Theorem \ref{thm:s
   \begin{align*}
     \left\| u_i \left( \cdot, t \right) - u_i^\prime \left( \cdot, t \right) \right\|
     &\leq \left\| U \left( \cdot, t \right) - U^\prime \left( \cdot, t \right) \right\|_\infty \\
-    &\leq M_1 \left( t \right) \left\| D - D^\prime \right\|_\infty + M_2 \left( t \right) \left\| \theta - \theta^\prime \right\|_\infty.
+    &\leq M_1 \left\| D - D^\prime \right\|_\infty + M_2 \left\| \theta - \theta^\prime \right\|_\infty.
   \end{align*}
   Moreover, since $\Omega$ is triangulable and $u_i \left( \cdot, t \right)$ and $u^\prime \left( \cdot, t \right)$ are continuous functions on $\Omega$, by Theorem \ref{thm:q-tame-of-continuous} and Theorem \ref{thm:stability}, we have
   \begin{align*}
@@ -222,7 +218,7 @@ Combining Proposition \ref{prop:bound-for-solution-diff} with Theorem \ref{thm:s
   \end{align*}
   Therefore, 
   \begin{align*}
-     d_B \left( \mathrm{dgm}_p~u_i \left( \cdot, t \right), \mathrm{dgm}_p~u_i^\prime \left( \cdot, t \right) \right) \leq M_1 \left( t \right) \left\| D - D^\prime \right\|_\infty + M_2 \left\| \theta - \theta^\prime \right\|_\infty
+     d_B \left( \mathrm{dgm}_p~u_i \left( \cdot, t \right), \mathrm{dgm}_p~u_i^\prime \left( \cdot, t \right) \right) \leq M_1 \left\| D - D^\prime \right\|_\infty + M_2 \left\| \theta - \theta^\prime \right\|_\infty
   \end{align*}
   which completes the proof.
 \end{proof}

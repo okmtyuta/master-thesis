@@ -36,18 +36,20 @@ We first introduce the notation used below. Let $p \geq 0$ be an integer, let $\
 \end{dfn}
 
 \begin{rem}
-  A simple concrete example of a sublevel set filtration can be constructed as follows. Let $\left( X, d \right)$ be a metric space, and let $C$ be a discrete subset of $X$. Define a function $f_C: X \to \mathbb{R}$ by, for any $x \in X$,
+  A simple concrete example of a sublevel set filtration can be constructed as follows. Let $\left( X, d \right)$ be a metric space, and let $C$ be a discrete subset of $X$. Define a function $d_C: X \to \mathbb{R}$ by, for any $x \in X$,
   \begin{align*}
-    f_C \left( x \right) = d \left( x, C \right) = \inf_{c \in C} d \left( x, c \right)
+    d_C \left( x \right) = \inf_{c \in C} d \left( x, c \right)
   \end{align*}
   Then, for any $a \in \mathbb{R}$,
   \begin{align*}
-    \Set{ f_C \leq a }
-    &= \Set{ x \in X \mid d \left( x, C \right) \leq a }\\
+    \Set{ d_C \leq a }
+    &= \Set{ x \in X \mid d_C \left( x \right) \leq a }\\
     &= \bigcup_{c \in C} \Set{ x \in X \mid d \left( x, c \right) \leq a }.
   \end{align*}
-  Therefore, the sublevel set filtration $\mathcal{F} \left[ f_C \right]$ is, as in Figure xxx, a sequence of spaces obtained by thickening each point of $C$.
+  Therefore, the sublevel set filtration $\mathcal{F} \left[ f_C \right]$ is, as in Figure \ref{fig:example-sublevel-set-filtration}, a sequence of spaces obtained by thickening each point of $C$.
 \end{rem}
+
+\input{figures/example_sublevel_set_filtration.tex}
 
 For any real numbers $a \leq b$, we have $\Set{ f \leq a } \subset \Set{ f \leq b }$. Hence, by Proposition \ref{prop:natural-linear-map-of-inclusion}, for each integer $p \geq 0$ and $a \leq b$, there is a natural linear map $\left( \iota_{a, b} \right)_*: H_p \left( \Set{f \leq a} \right) \to H_p \left( \Set{f \leq b} \right)$. The persistent homology of $\mathcal{F} \left[ f \right]$ is defined the pair consisting of the family of homology groups associated with $\mathcal{F} \left[ f \right]$ and the induced maps describing how geometric features evolve along the filtration.
 

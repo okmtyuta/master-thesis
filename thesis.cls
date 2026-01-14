@@ -70,3 +70,6 @@
 \newtheorem{rem}[dfn]{Remark}
 
 \renewcommand{\labelenumi}{(\arabic{enumi})}
+
+\renewcommand{\figurename}{Figure~}
+\renewcommand{\tablename}{Table~}

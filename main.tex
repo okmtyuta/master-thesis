@@ -1,5 +1,5 @@
 \documentclass{thesis}
-
+\usepackage{subcaption}
 \addbibresource{references.bib}
 \usepackage[toc,page]{appendix}
 \author{Yuta Okamoto}
@@ -24,9 +24,10 @@
 \input{partials/simulation_study.tex}
 \input{partials/conclusion.tex}
 
-% \begin{appendices}
-% \input{appendices/abstract_semigroup_framework.tex}
-% \end{appendices}
+\begin{appendices}
+  \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+  \input{appendices/supplementary_explanation_of_semigroup_method.tex}
+\end{appendices}
 
 \printbibliography
 
