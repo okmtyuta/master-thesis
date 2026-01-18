@@ -10,25 +10,36 @@ In Section \ref{sec:example}, we showed that inequality \eqref{eq:main-theorem-g
 
 In the theoretical analysis in Section \ref{sec:method} and Section \ref{sec:example}, we used singular homology; however, singular homology is not suitable for numerical computation. Therefore, in this section, we compute persistent homology using cubical homology based on cubical complexes. This modification does not essentially affect the conclusion of Theorem \ref{thm:main-theorem}. For details on cubical homology, see \cite{kaczynski2006computational}. Moreover, we use the Python library GUDHI \cite{gudhi:urm} to compute persistent homology.
 
-In the Gray--Scott model, the parameters of the reaction terms $\theta=\left( F,k \right)$ are often treated as the primary model parameters. Following this convention, in this section we fix the diffusion coefficients (reaction coefficients) at $\lambda_1 = 0.1$ and $\lambda_2 = 0.05$, and vary only $\theta$. Given $\theta$, we write the solution of the Gray--Scott model \eqref{eq:general-gray-scott} as $\left( u_1,u_2 \right)=\left( u_{1,\theta},u_{2,\theta} \right)$. In what follows, we focus only on $u_{1,\theta}$.
+In the Gray--Scott model, the parameters of the reaction terms $\theta=\left( F,k \right)$ are often treated as the primary model parameters. Following this convention, in this section we fix the diffusion coefficients at $\lambda_1 = 0.1$ and $\lambda_2 = 0.05$, and vary only $\theta$. Given $\theta$, we write the solution of the Gray--Scott model \eqref{eq:general-gray-scott} as $\left( u_1,u_2 \right) = \left( u_{1,\theta},u_{2,\theta} \right)$. In what follows, to facilitate a clearer comparison of the experimental results, we present only the simulation results for $u_{1, \theta}$. Similar results also hold for $u_{2, \theta}$.
 
 
 \begin{table}[h]
  \begin{center}
+  \caption{Parameters considered in the simulation. $\theta_1$ and $\theta_1^\prime$, as well as $\theta_2$ and $\theta_2^\prime$, are similar parameter settings.}
   \begin{tabular}{c|cccc}
     & $\theta_1$ & $\theta_1^\prime$ & $\theta_2$ & $\theta_2^\prime$  \\ \hline
     $F$ & 0.02000    & 0.02001           & 0.02500    & 0.02501         \\
     $k$ & 0.05750    & 0.05751           & 0.05500    & 0.05501      
   \end{tabular}
-  \caption{Parameters considered in the simulation. $\theta_1$ and $\theta_1^\prime$, as well as $\theta_2$ and $\theta_2^\prime$, are similar parameter settings.}
   \label{tab:parameters}
  \end{center}
 \end{table}
 
-% シミュレーションは2次元空間（$d = 2$）で行い，時間区間は$0 \leq t \leq T = 3000$とする。初期条件にはFigure \ref{fig:initial-condition}に示す$\tilde{u_1},\tilde{u_2}$を用いる。また，実験ではTable \ref{tab:parameters}に示す4つのパラメータ$\theta_1, \theta_1^\prime, \theta_2,\theta_2^\prime$を取り上げる。Figure \ref{fig:u-theta}に示すように，$\theta_1$と$\theta_1^\prime$はいずれもspotパターンを生成し，互いに類似している。同様に，$\theta_2$と$\theta_2^\prime$はいずれもlabyrinthパターンを生成し，互いに類似している。さらに，これらのパラメータを含むように，探索するパラメータ領域を$\mathcal{F}=[0.0100,0.0300]$および$\mathcal{K}=[0.0450,0.0600]$と定める。
-
 We perform simulations in a two-dimensional spatial domain $\left( d = 2 \right)$ and consider the time interval $0 \leq t \leq T = 3000$. For the initial condition, we use $\tilde{u_1},\tilde{u_2}$ shown in Figure \ref{fig:initial-condition}. In addition, we consider the four parameter settings $\theta_1, \theta_1^\prime, \theta_2,\theta_2^\prime$ listed in Table \ref{tab:parameters}. As shown in Figure \ref{fig:u-theta}, both $\theta_1$ and $\theta_1^\prime$ generate spot patterns and are similar to each other. Similarly, both $\theta_2$ and $\theta_2^\prime$ generate labyrinth patterns and are similar to each other. Furthermore, so as to include these parameter settings, we define the parameter search regions as $\mathcal{F}=\left[ 0.0100,0.0300 \right]$ and $\mathcal{K}=\left[ 0.0450,0.0600 \right]$.
 
+First, for the parameter pairs $\left( \mu, \nu \right) \in \Set{ \left( \theta_1, \theta_1^\prime \right), \left( \theta_2, \theta_2^\prime \right), \left( \theta_1, \theta_2 \right) }$ and for $p = 0, 1$, we numerically computed $d_B \left( \mathrm{dgm}_p~u_{1, \mu}, \mathrm{dgm}_p~u_{1, \nu} \right)$, $\left\| u_{1, \mu} - u_{1, \nu} \right\|_\infty$, and $M_2 \left( t \right) \left\| \mu - \nu \right\|_{\infty}$, and examined whether inequality \eqref{eq:main-theorem-gs}, namely
+\begin{align*}
+  d_B \left( \mathrm{dgm}_p~u_{1, \mu}, \mathrm{dgm}_p~u_{1, \nu} \right) \leq \left\| u_{1, \mu} - u_{1, \nu} \right\|_\infty \leq M_2 \left( t \right)\left\| \mu - \nu \right\|_{\infty}
+\end{align*}
+holds. The results are shown in Figure \ref{fig:simulation-for-inequality}.  From Figure \ref{fig:simulation-for-inequality}, we see that inequality \eqref{eq:main-theorem-gs} holds for each parameter pair $\left( \mu, \nu \right).$ On the other hand, as the time $t$ increases, $M_2 \left( t \right)\left\| \mu - \nu \right\|_{\infty}$ becomes very large, indicating that \eqref{eq:main-theorem-gs} provides a loose bound. This is because $M_2 \left( t \right)$ grows exponentially with respect to time $t$. Therefore, when $t$ is large, the usefulness of inequality \eqref{eq:main-theorem-gs} deteriorates significantly.
+
+Next, we directly compare the persistence diagrams themselves and, through visualization, verify that when the difference between parameters is small, the change in the diagram's shape is also small. Figure \ref{fig:theta-time-series} shows the patterns generated by each parameter $\theta \in \Set{ \theta_1, \theta_1^\prime, \theta_2, \theta_2^\prime }$ and the temporal evolution of their persistence diagrams. From Figure \ref{fig:theta-time-series}, for the parameter pairs $\left( \theta_1, \theta_1^\prime \right)$ and $\left( \theta_2, \theta_2^\prime \right)$, the corresponding point configurations in the persistence diagrams are highly similar to each other, indicating visually that small perturbations in the parameters lead to only small changes in the persistence diagrams.
+
+\input{partials/simulation_study_result1.tex}
+
+\input{partials/simulation_study_result2.tex}
+
+% シミュレーションは2次元空間（$d = 2$）で行い，時間区間は$0 \leq t \leq T = 3000$とする。初期条件にはFigure \ref{fig:initial-condition}に示す$\tilde{u_1},\tilde{u_2}$を用いる。また，実験ではTable \ref{tab:parameters}に示す4つのパラメータ$\theta_1, \theta_1^\prime, \theta_2,\theta_2^\prime$を取り上げる。Figure \ref{fig:u-theta}に示すように，$\theta_1$と$\theta_1^\prime$はいずれもspotパターンを生成し，互いに類似している。同様に，$\theta_2$と$\theta_2^\prime$はいずれもlabyrinthパターンを生成し，互いに類似している。さらに，これらのパラメータを含むように，探索するパラメータ領域を$\mathcal{F}=[0.0100,0.0300]$および$\mathcal{K}=[0.0450,0.0600]$と定める。
 
 % まずは，パラメータの組み合わせ$\left( \mu, \nu \right) \in \Set{ \left( \theta_1, \theta_1^\prime \right), \left( \theta_2, \theta_2^\prime \right), \left( \theta_1, \theta_2 \right) }$および$p = 0, 1$に対して，$d_B \left( \mathrm{dgm}_p~u_{1, \mu}, \mathrm{dgm}_p~u_{1, \nu} \right)$，$\left\| u_{1, \mu} - u_{1, \nu} \right\|_\infty$および$M_2\left\| \mu - \nu \right\|_{\infty}$を数値的に計算し，不等式\eqref{eq:main-theorem-gs}，すなわち，
 % \begin{align*}
@@ -38,16 +49,7 @@ We perform simulations in a two-dimensional spatial domain $\left( d = 2 \right)
 
 % 不等式\eqref{eq:main-theorem-gs}をシミュレーションによって検証した結果をFigure \ref{fig:simulation-for-inequality}に示す。図より，すべてのパラメータの組み合わせに対して，不等式\eqref{eq:main-theorem-gs}が数値的に成立していることが確認できる。一方で，各パラメータの組み合わせ$\left( \mu, \nu \right) = \left( \theta_1, \theta_1^\prime \right)$時間$t$の増加に伴い，
 
-First, for the parameter pairs $\left( \mu, \nu \right) \in \Set{ \left( \theta_1, \theta_1^\prime \right), \left( \theta_2, \theta_2^\prime \right), \left( \theta_1, \theta_2 \right) }$ and for $p = 0, 1$, we numerically computed $d_B \left( \mathrm{dgm}_p~u_{1, \mu}, \mathrm{dgm}_p~u_{1, \nu} \right)$, $\left\| u_{1, \mu} - u_{1, \nu} \right\|_\infty$, and $M_2 \left( t \right) \left\| \mu - \nu \right\|_{\infty}$, and examined whether inequality \eqref{eq:main-theorem-gs}, namely
-\begin{align*}
-  d_B \left( \mathrm{dgm}_p~u_{1, \mu}, \mathrm{dgm}_p~u_{1, \nu} \right) \leq \left\| u_{1, \mu} - u_{1, \nu} \right\|_\infty \leq M_2 \left( t \right)\left\| \mu - \nu \right\|_{\infty}
-\end{align*}
-holds. The results are shown in Figure \ref{fig:simulation-for-inequality}.  From Figure \ref{fig:simulation-for-inequality}, we see that inequality \eqref{eq:main-theorem-gs} holds for each parameter pair $\left( \mu, \nu \right).$ On the other hand, as the time $t$ increases, $M_2 \left( t \right)\left\| \mu - \nu \right\|_{\infty}$ becomes very large, indicating that \eqref{eq:main-theorem-gs} provides a loose bound. This is because $M_2 \left( t \right)$ grows exponentially with respect to time $t$. Therefore, when $t$ is large, the usefulness of inequality \eqref{eq:main-theorem-gs} deteriorates significantly.
-
 % 次に，パーシステンス図そのものを比較し，パラメータ差が小さい場合には図の形状の変化も小さいことを可視化によって確認する。Figure \ref{fig:theta-time-series}には，各パラメータ$\theta \in \Set{ \theta_1, \theta_1^\prime, \theta_2, \theta_2^\prime }$が生成するパターンとそのパーシステンス図の時間変化を示している。Figure \ref{fig:theta-time-series}より，パラメータの組み合わせ$\left( \theta_1, \theta_1^\prime \right)$および$\left( \theta_2, \theta_2^\prime \right)$に対しては，対応するパーシステンス図の点の配置は互いに良く類似しており，パラメータの微小な変化に対してパーシステンス図の変化も微小であることが視覚的に確認できる。
-
-Next, we directly compare the persistence diagrams themselves and, through visualization, verify that when the difference between parameters is small, the change in the diagram's shape is also small. Figure \ref{fig:theta-time-series} shows the patterns generated by each parameter $\theta \in \Set{ \theta_1, \theta_1^\prime, \theta_2, \theta_2^\prime }$ and the temporal evolution of their persistence diagrams. From Figure \ref{fig:theta-time-series}, for the parameter pairs $\left( \theta_1, \theta_1^\prime \right)$ and $\left( \theta_2, \theta_2^\prime \right)$, the corresponding point configurations in the persistence diagrams are highly similar to each other, indicating visually that small perturbations in the parameters lead to only small changes in the persistence diagrams.
-
 
 % 不等式\eqref{eq:main-theorem-gs}をシミュレーションによって検証した結果を図xxxに示す。図より，検討したすべてのパラメータに対して左辺は右辺以下に収まっており，不等式\eqref{eq:main-theorem-gs}が数値的に支持されることが確認できる。さらに，時間$t$の増加に伴い右辺が大きくなるため，上界は次第に緩くなる傾向が見られる。したがって，不等式\eqref{eq:main-theorem-gs}はすべての$0 \leq t \leq T$で成立する一方，長時間領域では距離の評価としての有用性が低下する。
 
@@ -70,14 +72,6 @@ Next, we directly compare the persistence diagrams themselves and, through visua
 % The theoretical analyses in Sections \ref{sec:method} and \ref{sec:example} are based on singular homology; however, singular homology is not well suited for direct numerical computation. Therefore, in this section we evaluate persistent homology using cubical homology based on cubical complexes. Note that replacing singular homology with cubical homology does not affect the essential conclusions of Theorem \ref{thm:main-theorem}. For details on cubical homology, see \cite{kaczynski2006computational}. Persistent homology is computed using the Python library GUDHI \cite{gudhi:urm}.
 
 % In analyses of the Gray--Scott model, it is common to treat only the reaction-term parameters $\theta = \left( F, k \right)$ as model parameters. In our simulations, we likewise fix the reaction coefficients at $\lambda_1 = 0.10$ and $\lambda_2 = 0.05$, and vary only $\theta$. We denote the solution of the Gray--Scott model for a parameter $\theta$ by $\left( u_{1, \theta},u_{2, \theta} \right)$, and focus in particular on $u_{1, \theta}$. We set the spatial dimension to $d = 2$ and consider the time interval $0 \leq t \leq T = 4000$. Table \ref{tab:parameters} lists the parameters of interest in the simulations. To include $\theta_1,\theta_2,\theta_3$, we define the parameter ranges as $\mathcal{F}=\left[ 0.0100,0.0300 \right]$ and $\mathcal{K}=\left[ 0.0500,0.0600 \right]$.
-
-
-
-\input{partials/simulation_study_result1.tex}
-
-\input{partials/simulation_study_result2.tex}
-
-
 
 % \begin{figure}[h]
 %   \centering

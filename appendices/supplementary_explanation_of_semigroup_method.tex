@@ -147,8 +147,8 @@ Under this setup, we shall show that $\mathcal{H}_\lambda = \Set{ H_\lambda \lef
   \begin{align*}
     \left( \dfrac{d}{dt} H_{\lambda} \left( t \right) u \right) \left( x \right)
     &= \int_\Omega \dfrac{\partial}{\partial t} K_{\lambda, t} \left( x - y \right) u \left( y \right) dy\\
-    &= \lambda \int_\Omega K_{\lambda, t} \left( x - y \right) u \left( y \right) dy \\
-    &= \lambda \Delta \int_\Omega \Delta K_{\lambda, t} \left( x - y \right) u \left( y \right) dy\\
+    &= \lambda \int_\Omega \Delta K_{\lambda, t} \left( x - y \right) u \left( y \right) dy \\
+    &= \lambda \Delta \int_\Omega K_{\lambda, t} \left( x - y \right) u \left( y \right) dy\\
     &= \lambda \Delta \left( H_{\lambda} \left( t \right) u \right) \left( x \right)\\
     &= \left( H_{\lambda} \left( t \right) \lambda \Delta u \right) \left( x \right).
   \end{align*}
@@ -158,12 +158,12 @@ Under this setup, we shall show that $\mathcal{H}_\lambda = \Set{ H_\lambda \lef
   \end{align*}
   Hence,
   \begin{align*}
-    \left\| \dfrac{H_\lambda \left( t \right) u - u \left( x \right)}{t} - \lambda \Delta u \right\|_\infty
+    \left\| \dfrac{H_\lambda \left( t \right) u - u }{t} - \lambda \Delta u \right\|_\infty
     &\leq \dfrac{1}{t} \int_0^t \left\| H_{\lambda} \left( s \right) \lambda \Delta u - \lambda \Delta u \right\|_\infty ds \to 0 ~ \left( t \searrow 0 \right),
   \end{align*}
   and therefore
   \begin{align*}
-    \lim_{t \searrow 0} \dfrac{H_\lambda \left( t \right) u - u \left( x \right)}{t} = \lambda \Delta u.
+    \lim_{t \searrow 0} \dfrac{H_\lambda \left( t \right) u - u}{t} = \lambda \Delta u.
   \end{align*}
 \end{proof}
 

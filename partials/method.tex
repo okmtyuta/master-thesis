@@ -17,7 +17,7 @@ Let $n, d, q$ be positive integers and let $T > 0$ be a positive real number. Se
     1 \leq i \leq n,\\
   \end{dcases}
 \end{align}
-where $D = \left( \lambda_1, \dots, \lambda_n \right), D^\prime = \left( \lambda_1^\prime, \dots, \lambda_n^\prime \right) \in \Lambda^n$ and $\theta, \theta^\prime \in \Theta$ are parameters of the systems. We impose periodic boundary conditions on $\Omega$. We also denote by $U = \left( u_1, \dots, u_n \right)$ and $U^\prime = \left( u_1^\prime, \dots, u_n^\prime \right)$ the vector-valued solutions of \eqref{eq:reaction-diffusion-equations-normal} and \eqref{eq:reaction-diffusion-equations-prime}, respectively.
+where $\theta, \theta^\prime \in \Theta$ are parameters of the reaction term. We impose periodic boundary conditions on $\Omega$. We also denote by $U = \left( u_1, \dots, u_n \right)$ and $U^\prime = \left( u_1^\prime, \dots, u_n^\prime \right)$ the vector-valued solutions of \eqref{eq:reaction-diffusion-equations-normal} and \eqref{eq:reaction-diffusion-equations-prime}, respectively.
 
 Under this setting, for each $1 \leq i \leq n$, we investigate how the bottleneck distance between the $p$-dimensional persistence diagrams $\mathrm{dgm}_p~u_i \left( \cdot, t \right)$ and $\mathrm{dgm}_p~u_i^\prime \left( \cdot, t \right)$, obtained from $u_i \left( \cdot, t \right)$ and $u_i^\prime \left( \cdot, t \right)$, can be controlled in terms of the model parameters $D, \theta$ and $D^\prime, \theta^\prime$. More precisely, we establish the following Lipschitz continuity.
 
@@ -38,11 +38,12 @@ Under this setting, for each $1 \leq i \leq n$, we investigate how the bottlenec
   \end{align}
   then, for all $0 \leq t \leq T$, there exist constants $M_1 \left( t \right), M_2 \left( t \right) \in \mathbb{R}$, independent of $D, D^\prime$ and $\theta, \theta^\prime$, such that,
   \begin{align}\label{eq:inequality-main-theorem}
-    d_B \left( \mathrm{dgm}_p u_i \left( \cdot, t \right), \mathrm{dgm}_p u_i^\prime \left( \cdot, t \right) \right) \leq M_1 \left( t \right) \left\| D - D^\prime \right\|_\infty + M_2 \left( t \right) \left\| \theta - \theta^\prime \right\|_\infty.
+    d_B \left( \mathrm{dgm}_p u_i \left( \cdot, t \right), \mathrm{dgm}_p u_i^\prime \left( \cdot, t \right) \right) \leq M_1 \left( t \right) \left\| D - D^\prime \right\|_\infty + M_2 \left( t \right) \left\| \theta - \theta^\prime \right\|_\infty,
   \end{align}
+  where $D = \left( \lambda_1, \dots, \lambda_n \right), D^\prime = \left( \lambda_1^\prime, \dots, \lambda_n^\prime \right) \in \Lambda^n$.
 \end{thm}
 
-This theorem shows that if the differences between the model parameters, $\left\| D - D^\prime \right\|_\infty$ and $\left\| \theta - \theta^\prime \right\|_\infty$ are sufficiently small, then the bottleneck distance $d_B \left( \mathrm{dgm}_p~u_i, \mathrm{dgm}_p~u_i^\prime \right)$ is also necessarily small.
+This theorem shows that if the differences between the model parameters, $\left\| D - D^\prime \right\|_\infty$ and $\left\| \theta - \theta^\prime \right\|_\infty$, are sufficiently small, then the bottleneck distance $d_B \left( \mathrm{dgm}_p~u_i, \mathrm{dgm}_p~u_i^\prime \right)$ is also necessarily small.
 
 \subsection{Proof of main theorem}
 
@@ -50,9 +51,9 @@ The proof of Theorem \ref{thm:main-theorem} is based on Theorem \ref{thm:stabili
 
 \begin{lem}\label{lem:contraction}
   Let $\lambda \in \Lambda$ and $0 \leq t \leq T$. Then for any $u \in C_{\mathrm{per}} \left( \Omega \right)$, we have
-  \begin{align*}
+  \begin{align}\label{eq:lem-contraction}
     \left\| H_{\lambda} \left( t \right) u \right\|_\infty \leq  \left\| u \right\|_\infty.
-  \end{align*}
+  \end{align}
 \end{lem}
 
 \begin{proof}
@@ -63,17 +64,18 @@ The proof of Theorem \ref{thm:main-theorem} is based on Theorem \ref{thm:stabili
     & \leq \left\| K_{\lambda, t} \right\|_{L^1} \left\| u \right\|_{\infty}\\
     &= \left\| u \right\|_{\infty}.
   \end{align*}
+  It follows that \eqref{eq:lem-contraction} holds.
 \end{proof}
 
 \begin{lem}\label{lem:heat-kernel-lip}
   For any $0 \leq t \leq T$ and $\lambda, \lambda^\prime \in \Lambda$, we have
-  \begin{align*}
-    \left\| K_{\lambda, t} - K_{\lambda^\prime, t} \right\|_{L^1} \leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left| \lambda - \lambda^\prime \right|.
-  \end{align*}
+  \begin{align}\label{eq:lem-heat-kernel-lip-1}
+    \left\| K_{\lambda, t} - K_{\lambda^\prime, t} \right\|_{L^1} \leq \dfrac{d}{\inf_{\lambda^* \in \Lambda} \lambda^*} \left| \lambda - \lambda^\prime \right|.
+  \end{align}
   Moreover, for any $u \in C_{\mathrm{per}} \left( \Omega \right)$, we have
-  \begin{align*}
-    \left\| \left( H_{\lambda} \left( t \right) - H_{\lambda^\prime} \left( t \right) \right) u \right\|_{\infty} \leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left| \lambda - \lambda^\prime \right| \left\| u \right\|_\infty.
-  \end{align*}
+  \begin{align}\label{eq:lem-heat-kernel-lip-2}
+    \left\| \left( H_{\lambda} \left( t \right) - H_{\lambda^\prime} \left( t \right) \right) u \right\|_{\infty} \leq \dfrac{d}{\inf_{\lambda^* \in \Lambda} \lambda^*} \left| \lambda - \lambda^\prime \right| \left\| u \right\|_\infty.
+  \end{align}
 \end{lem}
 
 \begin{proof}
@@ -96,42 +98,44 @@ The proof of Theorem \ref{thm:main-theorem} is based on Theorem \ref{thm:stabili
     &= \dfrac{d}{2 \lambda} + \dfrac{1}{4 \lambda^2 t} 2d \lambda t\\
     &= \dfrac{d}{\lambda}
   \end{align*}
+  Thus, \eqref{eq:lem-heat-kernel-lip-1} is proved.
   
   Next, for any $\lambda, \lambda^\prime \in \Lambda$,
   \begin{align*}
     K_{\lambda, t} \left( x \right) - K_{\lambda^\prime, t} \left( x \right)
     &= \sum_{k \in \mathbb{Z}^d} \left( g_{\lambda, t} \left( x + k \right) - g_{\lambda^\prime, t} \left( x + k \right) \right)\\
-    &= \sum_{k \in \mathbb{Z}^d} \int_{\lambda^\prime}^{\lambda} \dfrac{\partial}{\partial \tau} g_{\tau, t} \left( x + k \right) d \tau \\
-    &= \int_{\lambda^\prime}^\lambda \sum_{k \in \mathbb{Z}^d} \dfrac{\partial}{\partial \tau} g_{\tau, t} \left( x + k \right) d \tau\\
-    &= \int_{\lambda^\prime}^\lambda \dfrac{\partial}{\partial \tau} K_{\tau, t} \left( x \right) d \tau.
+    &= \sum_{k \in \mathbb{Z}^d} \int_{\lambda^\prime}^{\lambda} \dfrac{\partial}{\partial \lambda^*} g_{\lambda^*, t} \left( x + k \right) d \lambda^* \\
+    &= \int_{\lambda^\prime}^\lambda \sum_{k \in \mathbb{Z}^d} \dfrac{\partial}{\partial \lambda^*} g_{\lambda^*, t} \left( x + k \right) d \lambda^*\\
+    &= \int_{\lambda^\prime}^\lambda \dfrac{\partial}{\partial \lambda^*} K_{\lambda^*, t} \left( x \right) d \lambda^*.
   \end{align*}
-  Hence, we can get
+  Hence, we can obtain
   \begin{align*}
     \left\| K_{\lambda, t} - K_{\lambda^\prime, t} \right\|_{L^1}
-    &= \int_{\left[ 0, 1 \right]^d} \left| \int_{\lambda^\prime}^\lambda \dfrac{\partial}{\partial \tau} K_{\tau, t} \left( x \right) d \tau \right| dx\\
-    &\leq \int_{\left[ 0, 1 \right]^d} \int_{\lambda^\prime}^\lambda \left| \dfrac{\partial}{\partial \tau} K_{\tau, t} \left( x \right) \right| d \tau dx\\
-    &= \int_{\lambda^\prime}^\lambda \left\| \dfrac{\partial}{\partial \tau} K_{\tau, t} \left( x \right) \right\|_{L^1} d\tau\\
-    &\leq \sup_{\tau \in \Lambda} \left\| \dfrac{\partial}{\partial \tau} K_{\tau, t} \left( x \right)  \right\|_{L^1} \left| \lambda - \lambda^\prime \right|\\
-    &\leq \sup_{\tau \in \Lambda} \dfrac{d}{\tau} \left| \lambda - 
+    &= \int_{\left[ 0, 1 \right]^d} \left| \int_{\lambda^\prime}^\lambda \dfrac{\partial}{\partial \lambda^*} K_{\lambda^*, t} \left( x \right) d \lambda^* \right| dx\\
+    &\leq \int_{\left[ 0, 1 \right]^d} \int_{\lambda^\prime}^\lambda \left| \dfrac{\partial}{\partial \lambda^*} K_{\lambda^*, t} \left( x \right) \right| d \lambda^* dx\\
+    &= \int_{\lambda^\prime}^\lambda \left\| \dfrac{\partial}{\partial \lambda^*} K_{\lambda^*, t} \left( x \right) \right\|_{L^1} d\lambda^*\\
+    &\leq \sup_{\lambda^* \in \Lambda} \left\| \dfrac{\partial}{\partial \lambda^*} K_{\lambda^*, t} \left( x \right)  \right\|_{L^1} \left| \lambda - \lambda^\prime \right|\\
+    &\leq \sup_{\lambda^* \in \Lambda} \dfrac{d}{\lambda^*} \left| \lambda - 
     \lambda^\prime \right|\\
-    &= \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left| \lambda - \lambda^\prime \right|.
+    &= \dfrac{d}{\inf_{\lambda^* \in \Lambda} \lambda^*} \left| \lambda - \lambda^\prime \right|.
   \end{align*}
   Finally, we have
   \begin{align*}
     \left\| \left( H_{\lambda} \left( t \right) - H_{\lambda^\prime} \left( t \right) \right) u \right\|_{\infty}
     &\leq \left\| K_{\lambda, t} - K_{\lambda^\prime, t} \right\|_{L^1} \left\| u \right\|_\infty\\
-    &\leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left| \lambda - \lambda^\prime \right| \left\| u \right\|_\infty.
+    &\leq \dfrac{d}{\inf_{\lambda^* \in \Lambda} \lambda^*} \left| \lambda - \lambda^\prime \right| \left\| u \right\|_\infty.
   \end{align*}
+  This yields \eqref{eq:lem-heat-kernel-lip-2}
 \end{proof}
 
 Combining the above estimates, we obtain the following bound for $\left\| u_i \left( \cdot, t \right) - u_i^\prime \left( \cdot, t \right) \right\|_\infty$.
 
 \begin{prop}\label{prop:bound-for-solution-diff}
   For all $0 \leq t \leq T$, there exist constants $M_1 \left( t \right), M_2 \left( t \right) \in \mathbb{R}$, independent of $D, D^\prime$ and $\theta, \theta^\prime$, such that
-  \begin{align*}
+  \begin{align}\label{eq:prop-bound-for-solution-diff}
     \left\| U \left( \cdot, t \right) - U^\prime \left( \cdot, t \right) \right\|_\infty
-    \leq M_1 \left\| D - D^\prime \right\|_\infty + M_2 \left( t \right) \left\| \theta - \theta^\prime \right\|_\infty.
-  \end{align*}
+    \leq M_1 \left( t \right) \left\| D - D^\prime \right\|_\infty + M_2 \left( t \right) \left\| \theta - \theta^\prime \right\|_\infty.
+  \end{align}
 \end{prop}
 
 \begin{proof}
@@ -140,7 +144,7 @@ Combining the above estimates, we obtain the following bound for $\left\| u_i \l
     u_i \left( \cdot, t \right) &= H_{\lambda_i} \left( t \right) \tilde{u}_i \left( \cdot \right) + \int_0^t H_{\lambda_i} \left( t - s \right) R_i \left( u_1 \left( \cdot, s \right), \dots, u_n \left( \cdot, s \right); \theta \right) ds, \\
     u_i^\prime \left( \cdot, t \right) &= H_{\lambda_i^\prime} \left( t \right) \tilde{u}_i \left( \cdot \right) + \int_0^t H_{\lambda_i^\prime} \left( t - s \right) R_i \left( u_1^\prime \left( \cdot, s \right), \dots, u_n^\prime \left( \cdot, s \right); \theta^\prime \right) ds.
   \end{align*}
-  Hence, we can get
+  Hence, we can obtain
   \begin{align*}
     \left\| u_i \left( \cdot, t \right) - u_i^\prime \left( \cdot, t \right) \right\|_\infty
     &\leq \left\| \left( H_{\lambda_i} \left( t \right) - H_{\lambda_i^\prime} \left( t \right) \right) \tilde{u}_i \left( \cdot \right) \right\|_\infty\\
@@ -153,23 +157,23 @@ Combining the above estimates, we obtain the following bound for $\left\| u_i \l
   \begin{align*}
     E_{i, 1} &= \left\| \left( H_{\lambda_i} \left( t \right) - H_{\lambda_i^\prime} \left( t \right) \right) \tilde{u}_i \left( \cdot \right) \right\|_\infty, \\
     E_{i, 2} &= \left\| \int_0^t \left( H_{\lambda_i} \left( t - s \right) - H_{\lambda_i^\prime} \left( t - s \right) \right) R_i \left( U \left( \cdot, s \right); \theta \right) ds \right\|_\infty, \\
-    E_{i, 3} &= \left\| \int_0^t H_{\lambda_i} \left( t - s \right) \left( R_i \left( U \left( \cdot, s \right); \theta \right) - R_i \left( U^\prime \left( \cdot, s \right); \theta^\prime \right) \right) ds \right\|_\infty,
+    E_{i, 3} &= \left\| \int_0^t H_{\lambda_i} \left( t - s \right) \left( R_i \left( U \left( \cdot, s \right); \theta \right) - R_i \left( U^\prime \left( \cdot, s \right); \theta^\prime \right) \right) ds \right\|_\infty.
   \end{align*}
-  then, by estimating $E_{i, 1}$, $E_{i, 2}$, and $E_{i, 3}$, we obtain the desired bound for $\left\| u_i \left( \cdot, t \right) - u_i^\prime \left( \cdot, t \right) \right\|_\infty$. We now proceed to estimate $E_{i, 1}, E_{i, 2}, E_{i, 3}$.
+  Then, by estimating $E_{i, 1}$, $E_{i, 2}$, and $E_{i, 3}$, we obtain the desired bound for $\left\| u_i \left( \cdot, t \right) - u_i^\prime \left( \cdot, t \right) \right\|_\infty$. We now proceed to estimate $E_{i, 1}, E_{i, 2}, E_{i, 3}$.
 
   First, by \eqref{eq:state-bound} and Lemma \ref{lem:heat-kernel-lip},
   \begin{align*}
     E_{i, 1}
     &= \left\| \left( H_{\lambda_i} \left( t \right) - H_{\lambda_i^\prime} \left( t \right) \right) \tilde{u}_i \left( \cdot \right) \right\|_\infty \\
-    &\leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left| \lambda_i - \lambda_i^\prime \right| \left\| \tilde{u}_i \left( \cdot \right) \right\|_\infty \\
-    &\leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left| \lambda_i - \lambda_i^\prime \right| L_4.
+    &\leq \dfrac{d}{\inf_{\lambda^* \in \Lambda} \lambda^*} \left| \lambda_i - \lambda_i^\prime \right| \left\| \tilde{u}_i \left( \cdot \right) \right\|_\infty \\
+    &\leq \dfrac{d}{\inf_{\lambda^* \in \Lambda} \lambda^*} \left| \lambda_i - \lambda_i^\prime \right| L_4.
   \end{align*}
   Next, by \eqref{eq:reaction-bound} and Lemma \ref{lem:heat-kernel-lip},
   \begin{align*}
     E_{i, 2}
     &= \left\| \int_0^t \left( H_{\lambda_i} \left( t - s \right) - H_{\lambda_i^\prime} \left( t - s \right) \right) R_i \left( U \left( \cdot, s \right); \theta \right) ds \right\|_\infty \\
     &\leq \int_0^t \left\| \left( H_{\lambda_i} \left( t - s \right) - H_{\lambda_i^\prime} \left( t - s \right) \right) R_i \left( U \left( \cdot, s \right); \theta \right) \right\|_\infty ds \\
-    &\leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left| \lambda_i - \lambda_i^\prime \right| L_3 t.
+    &\leq \dfrac{d}{\inf_{\lambda^* \in \Lambda} \lambda^*} \left| \lambda_i - \lambda_i^\prime \right| L_3 t.
   \end{align*}
   Finally, by \eqref{eq:reaction-lip} and Lemma \ref{lem:contraction},
   \begin{align*}
@@ -184,21 +188,21 @@ Combining the above estimates, we obtain the following bound for $\left\| u_i \l
   \begin{align*}
     \left\| u_i \left( \cdot, t \right) - u_i^\prime \left( \cdot, t \right) \right\|_\infty
     &\leq E_{i, 1} + E_{i, 2} + E_{i, 3}\\
-    &\leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left( L_4 + L_3 t \right) \left| \lambda_i - \lambda_i^\prime \right| + L_2 t \left\| \theta - \theta^\prime \right\|_\infty + L_1 \int_0^t \left\| U \left( \cdot, s \right) - U^\prime \left( \cdot, s \right) \right\|_\infty ds.
+    &\leq \dfrac{d}{\inf_{\lambda^* \in \Lambda} \lambda^*} \left( L_4 + L_3 t \right) \left| \lambda_i - \lambda_i^\prime \right| + L_2 t \left\| \theta - \theta^\prime \right\|_\infty + L_1 \int_0^t \left\| U \left( \cdot, s \right) - U^\prime \left( \cdot, s \right) \right\|_\infty ds.
   \end{align*}
   Therefore, we have
   \begin{align*}
     \left\| U \left( \cdot, t \right) - U^\prime \left( \cdot, t \right) \right\|_\infty
-    &\leq \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left( L_4 + L_3 t \right) \left\| D - D^\prime \right\|_\infty + L_2 t \left\| \theta - \theta^\prime \right\|_\infty + L_1 \int_0^t \left\| U \left( \cdot, s \right) - U^\prime \left( \cdot, s \right) \right\|_\infty ds.
+    &\leq \dfrac{d}{\inf_{\lambda^* \in \Lambda} \lambda^*} \left( L_4 + L_3 t \right) \left\| D - D^\prime \right\|_\infty + L_2 t \left\| \theta - \theta^\prime \right\|_\infty + L_1 \int_0^t \left\| U \left( \cdot, s \right) - U^\prime \left( \cdot, s \right) \right\|_\infty ds.
   \end{align*}
   By Gronwall's inequality \cite{henry2006geometric}, we obtain
   \begin{align*}
     \left\| U \left( \cdot, t \right) - U^\prime \left( \cdot, t \right) \right\|_\infty
-    &\leq \left\{ \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left( L_4 + L_3 t \right) \left\| D - D^\prime \right\|_\infty + L_2 t \left\| \theta - \theta^\prime \right\|_\infty \right\} e^{L_1 t}.
+    &\leq \left\{ \dfrac{d}{\inf_{\lambda^* \in \Lambda} \lambda^*} \left( L_4 + L_3 t \right) \left\| D - D^\prime \right\|_\infty + L_2 t \left\| \theta - \theta^\prime \right\|_\infty \right\} e^{L_1 t}.
   \end{align*}
   By setting
   \begin{align*}
-    M_1 \left( t \right) &= \dfrac{d}{\inf_{\tau \in \Lambda} \tau} \left( L_4 + L_3 t \right) e^{L_1 t}, \\
+    M_1 \left( t \right) &= \dfrac{d}{\inf_{\lambda^* \in \Lambda} \lambda^*} \left( L_4 + L_3 t \right) e^{L_1 t}, \\
     M_2 \left( t \right) &= L_2 t e^{L_1 t},
   \end{align*}
   we obtain
@@ -206,6 +210,7 @@ Combining the above estimates, we obtain the following bound for $\left\| u_i \l
     \left\| U \left( \cdot, t \right) - U^\prime \left( \cdot, t \right) \right\|_\infty
     \leq M_1 \left( t \right) \left\| D - D^\prime \right\|_\infty + M_2 \left( t \right) \left\| \theta - \theta^\prime \right\|_\infty.
   \end{align*}
+  It follows that \eqref{eq:prop-bound-for-solution-diff} holds.
 \end{proof}
 
 Combining Proposition \ref{prop:bound-for-solution-diff} with Theorem \ref{thm:stability}, we can now complete the proof of Theorem \ref{thm:main-theorem}.
@@ -224,5 +229,5 @@ Combining Proposition \ref{prop:bound-for-solution-diff} with Theorem \ref{thm:s
   \begin{align*}
      d_B \left( \mathrm{dgm}_p~u_i \left( \cdot, t \right), \mathrm{dgm}_p~u_i^\prime \left( \cdot, t \right) \right) \leq M_1 \left( t \right) \left\| D - D^\prime \right\|_\infty + M_2 \left\| \theta - \theta^\prime \right\|_\infty
   \end{align*}
-  which completes the proof.
+  which completes the proof of Theorem \ref{thm:main-theorem}.
 \end{proof}

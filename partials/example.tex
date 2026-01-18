@@ -35,15 +35,17 @@ The following proposition corresponds to conditions \eqref{eq:reaction-lip} and 
     \left\| U \left( \cdot, t \right) \right\|_\infty \leq L_4,~\left\| U^\prime \left( \cdot, t \right) \right\|_\infty \leq L_4
   \end{align*}
   Then, for any $i = 1, 2$ and $0 \leq t \leq T$, we have
-  \begin{align*}
-    &\left\| R_i \left( U \left( \cdot, t \right); \theta \right) - R_i \left( U^\prime \left( \cdot, t \right); \theta^\prime \right) \right\|_\infty\\
-    &\hspace{0.5cm}\leq \left( 3L_4^2 + \sup_{\tau \in \mathcal{F}} \tau + \sup_{\tau \in \mathcal{K}} \tau \right) \left\| U \left( \cdot, t \right) - U^\prime \left( \cdot, t \right) \right\|_\infty + \left( 1 + 2L_4 \right) \left\| \theta - \theta^\prime \right\|_\infty.
-  \end{align*}
+  \begin{equation}\label{eq:prop-gs-reaction-lip}
+    \begin{aligned}
+      &\left\| R_i \left( U \left( \cdot, t \right); \theta \right) - R_i \left( U^\prime \left( \cdot, t \right); \theta^\prime \right) \right\|_\infty\\
+      &\hspace{0.5cm}\leq \left( 3L_4^2 + \sup_{F^* \in \mathcal{F}} F^* + \sup_{k^* \in \mathcal{K}} k^* \right) \left\| U \left( \cdot, t \right) - U^\prime \left( \cdot, t \right) \right\|_\infty + \left( 1 + 2L_4 \right) \left\| \theta - \theta^\prime \right\|_\infty.
+    \end{aligned}
+  \end{equation}
   Moreover, we have
-  \begin{align*}
+  \begin{align}\label{eq:prop-gs-reaction-lip-reaction-norm}
     \left\|  R_i \left( U \left( \cdot, t \right); \theta \right) \right\|_\infty
-    &\leq L_4^3 + \left( \sup_{\tau \in \mathcal{F}} \tau + \sup_{\tau \in \mathcal{K}} \tau \right) \left( 1 + L_4 \right).
-  \end{align*}
+    &\leq L_4^3 + \left( \sup_{F^* \in \mathcal{F}} F^* + \sup_{k^* \in \mathcal{K}} k^* \right) \left( 1 + L_4 \right).
+  \end{align}
 \end{prop}
 
 \begin{proof}
@@ -68,7 +70,7 @@ The following proposition corresponds to conditions \eqref{eq:reaction-lip} and 
     &= \left\| u_1 \right\|_\infty \left\| u_2 - u_2^\prime \right\|_\infty \left\| u_2 + u_2^\prime \right\|_\infty + \left\| {u_2^\prime}^2  \right\|_\infty \left\| u_1 - u_1^\prime \right\|_\infty + F \left\| u_1 - u_1^\prime \right\|_\infty\\
     &\leq L_4 \left\| U - U^\prime \right\|_\infty 2L_4 + L_4^2 \left\| U - U^\prime \right\|_\infty + F \left\| U - U^\prime \right\|_\infty\\
     &= \left( 3L_4^2 + F \right)  \left\| U - U^\prime \right\|_\infty\\
-    &\leq \left( 3L_4^2 + \sup_{\tau \in \mathcal{F}} \tau \right)  \left\| U - U^\prime \right\|_\infty.
+    &\leq \left( 3L_4^2 + \sup_{F^* \in \mathcal{F}} F^* \right)  \left\| U - U^\prime \right\|_\infty.
   \end{align*}
   Similarly, we have
   \begin{align*}
@@ -77,17 +79,18 @@ The following proposition corresponds to conditions \eqref{eq:reaction-lip} and 
   \end{align*}
   Therefore,
   \begin{align*}
-    \left\| R_1 \left( U; \theta \right) - R_1 \left( U^\prime; \theta^\prime \right) \right\|_\infty \leq \left( 3L_4^2 + \sup_{\tau \in \mathcal{F}} \tau \right)  \left\| U - U^\prime \right\|_\infty + \left( 1 + L_4 \right) \left\| \theta - \theta^\prime \right\|_\infty
+    \left\| R_1 \left( U; \theta \right) - R_1 \left( U^\prime; \theta^\prime \right) \right\|_\infty \leq \left( 3L_4^2 + \sup_{F^* \in \mathcal{F}} F^* \right)  \left\| U - U^\prime \right\|_\infty + \left( 1 + L_4 \right) \left\| \theta - \theta^\prime \right\|_\infty
   \end{align*}
   By a similar computation for $R_2$, we can obtain
   \begin{align*}
-    \left\| R_2 \left( U; \theta \right) - R_2 \left( U^\prime; \theta^\prime \right) \right\|_\infty \leq \left( 3L_4^2 + \sup_{\tau \in \mathcal{F}} \tau + \sup_{\tau \in \mathcal{K}} \tau \right)  \left\| U - U^\prime \right\|_\infty + 2L_4 \left\| \theta - \theta^\prime \right\|_\infty
+    \left\| R_2 \left( U; \theta \right) - R_2 \left( U^\prime; \theta^\prime \right) \right\|_\infty \leq \left( 3L_4^2 + \sup_{F^* \in \mathcal{F}} F^* + \sup_{k^* \in \mathcal{K}} k^* \right)  \left\| U - U^\prime \right\|_\infty + 2L_4 \left\| \theta - \theta^\prime \right\|_\infty
   \end{align*}
   Combining these estimates, for $i = 1, 2$, we have
   \begin{align*}
     &\left\| R_i \left( U \left( \cdot, t \right); \theta \right) - R_i \left( U^\prime \left( \cdot, t \right); \theta^\prime \right) \right\|_\infty\\
-    &\hspace{0.5cm}\leq \left( 3L_4^2 + \sup_{\tau \in \mathcal{F}} \tau + \sup_{\tau \in \mathcal{K}} \tau \right) \left\| U \left( \cdot, t \right) - U^\prime \left( \cdot, t \right) \right\|_\infty + \left( 1 + 2L_4 \right) \left\| \theta - \theta^\prime \right\|_\infty.
+    &\hspace{0.5cm}\leq \left( 3L_4^2 + \sup_{F^* \in \mathcal{F}} F^* + \sup_{k^* \in \mathcal{K}} k^* \right) \left\| U \left( \cdot, t \right) - U^\prime \left( \cdot, t \right) \right\|_\infty + \left( 1 + 2L_4 \right) \left\| \theta - \theta^\prime \right\|_\infty.
   \end{align*}
+  Hence, we have proved \eqref{eq:prop-gs-reaction-lip}.
 
   Next, for $R_1$, we have
   \begin{align*}
@@ -95,18 +98,19 @@ The following proposition corresponds to conditions \eqref{eq:reaction-lip} and 
     &= \left\| - u_1 u_2^2 + F \left( 1 - u_1 \right) \right\|_\infty \\
     &\leq \left\| - u_1 u_2^2 \right\|_\infty + \left\| F \left( 1 - u_1 \right) \right\|_\infty\\
     &\leq L_4^3 + F \left( 1 + L_4 \right)\\
-    &\leq L_4^3 + \sup_{\tau \in \mathcal{F}} \tau \left( 1 + L_4 \right)
+    &\leq L_4^3 + \sup_{F^* \in \mathcal{F}} F^* \left( 1 + L_4 \right)
   \end{align*}
   Similarly, for $R_2$, we have
   \begin{align*}
     \left\| R_2 \left( u_1, u_2; \theta \right) \right\|_\infty
-    &\leq L_4^3 + \left( \sup_{\tau \in \mathcal{F}} \tau + \sup_{\tau \in \mathcal{K}} \tau \right) L_4
+    &\leq L_4^3 + \left( \sup_{F^* \in \mathcal{F}} F^* + \sup_{k^* \in \mathcal{K}} k^* \right) L_4
   \end{align*}
   Hence, for $i=1,2$, we can conclude
   \begin{align*}
     \left\|  R_i \left( U \left( \cdot, t \right); \theta \right) \right\|_\infty
-    &\leq L_4^3 + \left( \sup_{\tau \in \mathcal{F}} \tau + \sup_{\tau \in \mathcal{K}} \tau \right) \left( 1 + L_4 \right).
+    &\leq L_4^3 + \left( \sup_{F^* \in \mathcal{F}} F^* + \sup_{k^* \in \mathcal{K}} k^* \right) \left( 1 + L_4 \right).
   \end{align*}
+  We conclude that \eqref{eq:prop-gs-reaction-lip-reaction-norm}.
 \end{proof}
 
 % $d$を正の整数とし，$\Omega = \left[ 0, 1 \right]^d$とおく。また，$T > 0$を正の実数とする。さらに，$\Lambda \subset \left( 0, \infty \right), \mathcal{F} \subset \left( 0, \infty \right), \mathcal{K} \subset \left( 0, \infty \right)$をそれぞれコンパクト集合とする。Preliminary sectionで紹介したように，パラメータ$\theta = \left( F, k \right) \in \mathcal{F} \times \mathcal{K}$に対するGray--Scottモデルの反応項は
@@ -226,11 +230,11 @@ The following proposition corresponds to conditions \eqref{eq:reaction-lip} and 
 
 In a setting where an upper bound $L_4$ exists for the solution vector of the Gray--Scott model, define
 \begin{align*}
-  M_1 \left( t \right) &= \dfrac{ d }{ \inf_{\tau \in \Lambda} \tau } \left( L_4 + L_4^3 + \left( \sup_{\tau \in \mathcal{F}} \tau + \sup_{\tau \in \mathcal{K}} \tau \right) \left( 1 + L_4 \right) \right) \exp \left( \left( 3L_4^2 + \sup_{\tau \in \mathcal{F}} \tau + \sup_{\tau \in \mathcal{K}} \tau \right) t \right),\\
-  M_2 \left( t \right) &=  \left( 1 + 2L_4 \right) t \exp \left( \left( 3L_4^2 + \sup_{\tau \in \mathcal{F}} \tau + \sup_{\tau \in \mathcal{K}} \tau \right) t \right),
+  M_1 \left( t \right) &= \dfrac{ d }{ \inf_{\lambda^* \in \Lambda} \lambda^* } \left( L_4 + L_4^3 + \left( \sup_{F^* \in \mathcal{F}} F^* + \sup_{k^* \in \mathcal{K}} k^* \right) \left( 1 + L_4 \right) \right) \exp \left( \left( 3L_4^2 + \sup_{F^* \in \mathcal{F}} F^* + \sup_{k^* \in \mathcal{K}} k^* \right) t \right),\\
+  M_2 \left( t \right) &=  \left( 1 + 2L_4 \right) t \exp \left( \left( 3L_4^2 + \sup_{F^* \in \mathcal{F}} F^* + \sup_{k^* \in \mathcal{K}} k^* \right) t \right),
 \end{align*}
 then, by Proposition \ref{prop:gs-reaction-lip} and Theorem \ref{thm:main-theorem}, for $i = 1, 2$, we have
 \begin{align}\label{eq:main-theorem-gs}
-  d_B \left( \mathrm{dgm}_p~u_i \left( \cdot, t \right), \mathrm{dgm}_p~u_i^\prime \left( \cdot, t \right) \right) \leq M_1 \left\| D - D^\prime \right\|_\infty + M_2 \left\| \theta - \theta^\prime \right\|_\infty.
+  d_B \left( \mathrm{dgm}_p~u_i \left( \cdot, t \right), \mathrm{dgm}_p~u_i^\prime \left( \cdot, t \right) \right) \leq M_1 \left( t \right) \left\| D - D^\prime \right\|_\infty + M_2 \left( t \right) \left\| \theta - \theta^\prime \right\|_\infty.
 \end{align}
 Using this approach, we see that the discussion in Section \ref{sec:method} can be applied to the Gray--Scott model.
