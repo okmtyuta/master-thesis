@@ -18,7 +18,11 @@ In 1952, A. M. Turing mathematically showed, under idealized conditions, that sp
     1 \leq i \leq n,
   \end{dcases}
 \end{align}
-where $u_i$ denotes the concentration of the $i$-th morphogen, and $\lambda_i$ is the diffusion coefficient of the $i$-th morphogen $u_i$, quantifying the strength of its diffusion. In \eqref{eq:general-reaction-diffusion-equations}, the term $\lambda_i \Delta u_i(x,t)$ describes diffusive transport, while $R_i \left(u_1(x,t),\dots,u_n(x,t)\right)$ represents the chemical reactions. Spatially heterogeneous patterns that arise in reaction-diffusion systems via diffusion-driven instability of a homogeneous steady state are called Turing patterns.
+where $u_i$ denotes the concentration of the $i$-th morphogen, $\lambda_i$ is the diffusion coefficient of the $i$-th morphogen $u_i$, quantifying the strength of its diffusion, and $\Delta$ is Laplace operator with respect to the spatial variable $x = \left( x_1, \dots, x_n \right) \in \mathbb{R}^d$, defined for a sufficiently smooth function $f: \mathbb{R}^d \to \mathbb{R}$ by
+\begin{align*}
+  \Delta f \left( x \right) = \sum_{j = 1}^d \dfrac{\partial^2 f}{\partial x_j^2} \left( x \right).
+\end{align*}
+In \eqref{eq:general-reaction-diffusion-equations}, the term $\lambda_i \Delta u_i(x,t)$ describes diffusive transport, while $R_i \left(u_1(x,t),\dots,u_n(x,t)\right)$ represents the chemical reactions. Spatially heterogeneous patterns that arise in reaction-diffusion systems via diffusion-driven instability of a homogeneous steady state are called Turing patterns.
 
 Whether biological body-surface patterns can indeed be explained by Turing patterns had long been a matter of debate. In 1995, however, Kondo and Asai demonstrated that developmental changes in the skin pattern of Pomacanthus fish can be explained by a Turing pattern mechanism \cite{kondo1995reaction}. This study supported Turing patterns as an important mathematical model for understanding the emergence of biological body patterns.
 
@@ -63,7 +67,14 @@ P.~Gray and S.~K.~Scott analyzed autocatalytic processes in continuous-flow stir
   U_1 + 2U_2 &\to 3U_2, \label{eq:gs-autocatalytic-reaction}\\
   U_2 &\to P. \label{eq:gs-decay-reaction}
 \end{align}
-Here, assume that the reactor volume is constant and equal to $V$, and that $U_1$ is supplied to the reactor at concentration $c$ with volumetric flow rate $q$. Let $k_1$ and $k_2$ denote the reaction rate constants in \eqref{eq:gs-autocatalytic-reaction} and \eqref{eq:gs-decay-reaction}, respectively, and let $u_1^\star$ and $u_2^\star$ denote the concentrations of $U_1$ and $U_2$. Including diffusion of the reactants, the evolution of $u_1^\star$ and $u_2^\star$ is given by
+Here, assume that the reactor volume is constant and equal to $V$, and that $U_1$ is supplied to the reactor at concentration $c$ with volumetric flow rate $q$. Let $k_1$ and $k_2$ denote the reaction rate constants in \eqref{eq:gs-autocatalytic-reaction} and \eqref{eq:gs-decay-reaction}, respectively, and let $u_1^\star$ and $u_2^\star$ denote the concentrations of $U_1$ and $U_2$. Under a stirred-tank assumption, there is no spatial variation in concentration. Hence, the evolution of $u_1^\star$ and $u_2^\star$ is given by
+\begin{align*}
+  \begin{dcases}
+    \dfrac{\partial u_1^\star}{\partial t^\star} = - k_1 u_1^\star (u_2^\star)^2 + \dfrac{q}{V}\left(c-u_1^\star\right),\\
+    \dfrac{\partial u_2^\star}{\partial t^\star} = k_1 u_1^\star (u_2^\star)^2 - k_2 u_2^\star - \dfrac{q}{V}u_2^\star .
+  \end{dcases}
+\end{align*}
+On the basis of studies by Pearson \cite{pearson1993complex} and others, this model was generalized to the following form, incorporating spatial concentration variations due to diffusion:
 \begin{align}
   \begin{dcases}\label{eq:gs-dimensional}
     \dfrac{\partial u_1^\star}{\partial t^\star} = \lambda_1^\star \Delta u_1^\star - k_1 u_1^\star (u_2^\star)^2 + \dfrac{q}{V}\left(c-u_1^\star\right),\\

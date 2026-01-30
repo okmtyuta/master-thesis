@@ -1,0 +1,50 @@
+\begin{center}
+  \begin{tikzpicture}
+    \def\R{2.0}
+    \def\r{0.6}
+    \def\nptsB{100}
+    \def\nptsT{40}
+    \def\dx{6.8}
+    \def\pointsize{0.05}
+    \def\labelsep{1.8}
+
+    \pgfmathsetmacro{\rlabel}{- \R - \labelsep}
+    \pgfmathsetmacro{\llabel}{- \R - \labelsep - 1}
+
+    \pgfmathsetseed{20251010}
+
+    \foreach \i in {1,...,\nptsB}{
+      \pgfmathsetmacro{\ang}{360*rnd}
+      \global\expandafter\edef\csname angleb\i\endcsname{\ang}
+    }
+
+    \foreach \i in {1,...,\nptsT}{
+      \pgfmathsetmacro{\ang}{360*rnd}
+      \global\expandafter\edef\csname anglet\i\endcsname{\ang}
+    }
+
+    \newcommand{\drawEight}[3]{%
+      \coordinate (Cb) at (#1, 0);
+      \coordinate (Ct) at (#1, {\R + \r + 0.5});
+
+      \foreach \i in {1,...,\nptsB}{
+        \path (Cb) ++(\csname angleb\i\endcsname:\R) coordinate (P);
+        \fill[accent] (P) circle[radius=#2];
+      }
+
+      \foreach \i in {1,...,\nptsT}{
+        \path (Ct) ++(\csname anglet\i\endcsname:\r) coordinate (Q);
+        \fill[accent] (Q) circle[radius=#2];
+      }
+
+      \node at (#1, \rlabel) {#3};
+    }
+
+
+    \drawEight{0}{\pointsize}{$\Set{ d_C \leq 1 }$}
+    \drawEight{\dx}{4.4 * \pointsize}{$\Set{ d_C \leq 5 }$}
+    \drawEight{2 * \dx}{7.8 * \pointsize}{$\Set{ d_C \leq 8 }$}
+    \drawEight{3 * \dx}{12 * \pointsize}{$\Set{ d_C \leq 12 }$}
+
+  \end{tikzpicture}
+\end{center}

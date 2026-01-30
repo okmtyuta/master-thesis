@@ -6,14 +6,19 @@ In this study, to apply the stability theorem of persistent homology, it is nece
 
 In this subsection, we provide an overview of how the semigroup method can be applied to reaction-diffusion systems. In particular, we explain how the semigroup framework allows one to represent classical solutions of reaction-diffusion systems. A fully rigorous introduction to the semigroup method would require defining concepts that are unnecessarily technical for the purposes of this study. Therefore, we restrict ourselves to the minimum material needed here. More detailed discussions are given in Appendix~\ref{sec:supplementary-explanation-of-semigroup-method}. For a rigorous and comprehensive treatment, see \cite{pazy2012semigroups}.
 
-We first introduce several pieces of notation. Let $d$ be a positive integer. Also, Let $\Omega = \left[ 0, 1 \right]^d$ and let $C_{\mathrm{per}} \left( \Omega \right)$ be the space of all continuous real-valued periodic functions having period $1$. Then, $\left( C_{\mathrm{per}} \left( \Omega \right), \left\| \cdot \right\|_{\infty} \right)$ is a Banach space. We define the subset $C^2_{\mathrm{per}} \left( \Omega \right)$ of $C_{\mathrm{per}} \left( \Omega \right)$ by
+We first introduce several pieces of notation. Let $d$ be a positive integer. Also, Let $\Omega = \left[ 0, 1 \right]^d$ and let $C_{\mathrm{per}} \left( \Omega \right)$ be the space of all continuous real-valued periodic functions having period $1$, that is, for any $x \in \Omega$, $1 \leq j \leq d$, and $u \in C_{\mathrm{per}} \left( \Omega \right)$, 
+\begin{align*}
+  u \left( \check{x}_j \right) = u \left( \hat{x}_j \right)
+\end{align*}
+where $\check{x}_j = \left( x_1, \dots, x_{j - 1}, 0, x_{j + 1}, \dots, x_d \right)$ and $\hat{x}_j = \left( x_1, \dots, x_{j - 1}, 1, x_{j + 1}, \dots, x_d \right)$.
+Then, $\left( C_{\mathrm{per}} \left( \Omega \right), \left\| \cdot \right\|_{\infty} \right)$ is a Banach space. We define the subset $C^2_{\mathrm{per}} \left( \Omega \right)$ of $C_{\mathrm{per}} \left( \Omega \right)$ by
 \begin{align*}
   C^2_{\mathrm{per}} \left( \Omega \right) = \Set{ u \in C_{\mathrm{per}} \left( \Omega \right) | \dfrac{\partial u}{\partial x_j}, \dfrac{\partial^2 u}{\partial x_j^2} \in C_{\mathrm{per}} \left( \Omega \right), 1 \leq j \leq d }.
 \end{align*}
-Then, we define the operator $\Delta$ on $C^2_{\mathrm{per}} \left( \Omega \right)$ for all $u \in C^2_{\mathrm{per}} \left( \Omega \right)$,
-\begin{align*}
-  \Delta u = \sum_{j = 1}^d \dfrac{\partial^2 u}{\partial x_j^2}.
-\end{align*}
+% Then, we define the operator $\Delta$ on $C^2_{\mathrm{per}} \left( \Omega \right)$ for all $u \in C^2_{\mathrm{per}} \left( \Omega \right)$,
+% \begin{align*}
+%   \Delta u = \sum_{j = 1}^d \dfrac{\partial^2 u}{\partial x_j^2}.
+% \end{align*}
 For all $\lambda > 0$ and $t > 0$, define
 \begin{align*}
   g_{\lambda, t} \left( x \right) &= \dfrac{1}{\left( 4 \pi \lambda t \right)^{d / 2}} \exp \left( - \dfrac{ \left\| x \right\|^2 }{ 4 \lambda t } \right),\\

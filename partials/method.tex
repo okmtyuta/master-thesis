@@ -4,7 +4,7 @@
 
 In this section, as outlined in the Introduction, we investigate the Lipschitz continuity of persistence diagrams arising from Turing patterns. We begin by formulating a general parameterized reaction-diffusion system and stating the theorem we aim to establish for this class of systems. The proof is then carried out using the concepts and results prepared in the Preliminary section.
 
-Let $n, d, q$ be positive integers and let $T > 0$ be a positive real number. Set $\Omega = \left[ 0, 1 \right]^d$ and $\Lambda \subset \left( 0, \infty \right)$ and $\Theta \subset \left( 0, \infty \right)^q$ be compact sets. We consider the following two parameterized reaction-diffusion systems:
+Let $n, d, q$ be positive integers and let $T > 0$ be a positive real number. Set $\Omega = \left[ 0, 1 \right]^d$ and let $\Lambda \subset \left( 0, \infty \right)$ and $\Theta \subset \left( 0, \infty \right)^q$ be compact sets. We consider the following two parameterized reaction-diffusion systems:
 \begin{align}
   &\begin{dcases}\label{eq:reaction-diffusion-equations-normal}
     \dfrac{\partial u_i}{\partial t} \left( x, t \right) = \lambda_i \Delta u_i \left( x, t \right) + R_i \left( u_1 \left( x, t \right), \dots, u_n \left( x, t \right); \theta \right), & \left( x, t \right) \in \Omega \times \left( 0, T \right] \\
@@ -17,9 +17,9 @@ Let $n, d, q$ be positive integers and let $T > 0$ be a positive real number. Se
     1 \leq i \leq n,\\
   \end{dcases}
 \end{align}
-where $\theta, \theta^\prime \in \Theta$ are parameters of the reaction term. We impose periodic boundary conditions on $\Omega$. We also denote by $U = \left( u_1, \dots, u_n \right)$ and $U^\prime = \left( u_1^\prime, \dots, u_n^\prime \right)$ the vector-valued solutions of \eqref{eq:reaction-diffusion-equations-normal} and \eqref{eq:reaction-diffusion-equations-prime}, respectively.
+where $\theta, \theta^\prime \in \Theta$ are parameters of the reaction term. We impose periodic boundary conditions on $\Omega$. We also let $U = \left( u_1, \dots, u_n \right)$ and $U^\prime = \left( u_1^\prime, \dots, u_n^\prime \right)$ be the vector-valued solutions of \eqref{eq:reaction-diffusion-equations-normal} and \eqref{eq:reaction-diffusion-equations-prime}, respectively.
 
-Under this setting, for each $1 \leq i \leq n$, we investigate how the bottleneck distance between the $p$-dimensional persistence diagrams $\mathrm{dgm}_p~u_i \left( \cdot, t \right)$ and $\mathrm{dgm}_p~u_i^\prime \left( \cdot, t \right)$, obtained from $u_i \left( \cdot, t \right)$ and $u_i^\prime \left( \cdot, t \right)$, can be controlled in terms of the model parameters $D, \theta$ and $D^\prime, \theta^\prime$. More precisely, we establish the following Lipschitz continuity.
+Under this setting, for each $1 \leq i \leq n$, we investigate how the bottleneck distance between the $p$-dimensional persistence diagrams $\mathrm{dgm}_p~u_i \left( \cdot, t \right)$ and $\mathrm{dgm}_p~u_i^\prime \left( \cdot, t \right)$, obtained from $u_i \left( \cdot, t \right)$ and $u_i^\prime \left( \cdot, t \right)$, can be controlled in terms of the model parameters $\lambda_i, \theta$ and $\lambda_i^\prime, \theta^\prime$, where $1 \leq i \leq n$. More precisely, we establish the following Lipschitz continuity.
 
 \begin{thm}\label{thm:main-theorem}
   Let $1 \leq i \leq n$, and let $p \geq 0$ be an integer. Suppose that, there exist constants $L_1, L_2, L_3, L_4 \in \mathbb{R}$ independent of $D, D^\prime$ and $\theta, \theta^\prime$, such that for all $x \in \Omega$ and $0 \leq t \leq T$,
@@ -28,12 +28,12 @@ Under this setting, for each $1 \leq i \leq n$, we investigate how the bottlenec
     &\leq L_1 \left\| \left( U \left( \cdot, t \right) \right)- \left( U^\prime \left( \cdot, t \right) \right)  \right\|_\infty\label{eq:reaction-lip}
     + L_2 \left\| \theta - \theta^\prime \right\|_\infty\\
     \left\| R_i \left( U \left( \cdot, t \right); \theta \right) \right\|_\infty
-    &\leq L_3, \label{eq:reaction-bound}
-    ~\left\| R_i \left( U^\prime \left( \cdot, t \right); \theta^\prime \right) \right\|_\infty
+    &\leq L_3, \quad \label{eq:reaction-bound}
+    \left\| R_i \left( U^\prime \left( \cdot, t \right); \theta^\prime \right) \right\|_\infty
     \leq L_3,\\
     \left\| U \left( \cdot, t \right) \right\|_\infty
-    &\leq L_4,
-    ~\left\| U^\prime \left( \cdot, t \right) \right\|_\infty
+    &\leq L_4, \quad
+    \left\| U^\prime \left( \cdot, t \right) \right\|_\infty
     \leq L_4,\label{eq:state-bound}
   \end{align}
   then, for all $0 \leq t \leq T$, there exist constants $M_1 \left( t \right), M_2 \left( t \right) \in \mathbb{R}$, independent of $D, D^\prime$ and $\theta, \theta^\prime$, such that,
@@ -79,26 +79,40 @@ The proof of Theorem \ref{thm:main-theorem} is based on Theorem \ref{thm:stabili
 \end{lem}
 
 \begin{proof}
-  This is obvious at $t = 0$. For any $0 < t \leq T$ and $x \in \mathbb{R}^d$
+  This is obvious at $t = 0$. For any $0 < t \leq T$ and $x \in \mathbb{R}^d$, we can obtainww
+  \begin{equation}
+    \begin{aligned}\label{eq:lem3-3-1}
+      \dfrac{\partial}{\partial \lambda} g_{\lambda, t} \left( x \right)
+      &= - \dfrac{d}{2} \dfrac{1}{\left( 4 \pi \lambda t \right)^{d / 2 + 1}} 4 \pi t \exp \left( - \dfrac{ \left\| x \right\|^2 }{ 4 \lambda t } \right) + \dfrac{1}{\left( 4 \pi \lambda t \right)^{d / 2}} \exp \left( - \dfrac{ \left\| x \right\|^2 }{ 4 \lambda t } \right) \dfrac{ \left\| x \right\|^2 }{ 4 \lambda^2 t }\\
+      &= \left( - \dfrac{ d }{ 2 \lambda } + \dfrac{ \left\| x \right\|^2 }{ 4 \lambda^2 t } \right) g_{\lambda, t} \left( x \right).
+    \end{aligned}
+  \end{equation}
+  Then, since $\sum_{k \in \mathbb{Z}^d} g_{\lambda, t} \left( x + k \right)$ converges absolutely and uniformly for any $x \in \Omega$ and $\lambda \in \Lambda$, we have
   \begin{align*}
-    \dfrac{\partial}{\partial \lambda} g_{\lambda, t} \left( x \right)
-    &= - \dfrac{d}{2} \dfrac{1}{\left( 4 \pi \lambda t \right)^{d / 2 + 1}} 4 \pi t \exp \left( - \dfrac{ \left\| x \right\|^2 }{ 4 \lambda t } \right) + \dfrac{1}{\left( 4 \pi \lambda t \right)^{d / 2}} \exp \left( - \dfrac{ \left\| x \right\|^2 }{ 4 \lambda t } \right) \dfrac{ \left\| x \right\|^2 }{ 4 \lambda^2 t }\\
-    &= \left( - \dfrac{ d }{ 2 \lambda } + \dfrac{ \left\| x \right\|^2 }{ 4 \lambda^2 t } \right) g_{\lambda, t} \left( x \right).
+    \dfrac{\partial}{\partial \lambda} K_{\lambda, t}
+    &= \dfrac{\partial}{\partial \lambda} \sum_{k \in \mathbb{Z}^d} g_{\lambda, t} \left( x + k \right)\\
+    &= \sum_{k \in \mathbb{Z}^d} \dfrac{\partial}{\partial \lambda} g_{\lambda, t} \left( x + k \right).
   \end{align*}
-  Then, 
+  Taking the $L^1$ norm of both sides, we have
   \begin{align*}
     \left\| \dfrac{\partial}{\partial \lambda} K_{\lambda, t} \right\|_{L^1}
-    &= \left\| \dfrac{\partial}{\partial \lambda} \sum_{k \in \mathbb{Z}^d} g_{\lambda, t} \left( x + k \right) \right\|_{L^1}\\
-    % &= \left\| \sum_{k \in \mathbb{Z}^d} \dfrac{\partial}{\partial \lambda} g_{\lambda, t} \left( x + k \right) \right\|_{L^1}\\
+    &= \left\| \sum_{k \in \mathbb{Z}^d} \dfrac{\partial}{\partial \lambda} g_{\lambda, t} \left( x + k \right) \right\|_{L^1}\\
     & \leq \sum_{k \in \mathbb{Z}^d} \left\| \dfrac{\partial}{\partial \lambda} g_{\lambda, t} \left( x + k \right) \right\|_{L^1}\\
-    &= \sum_{k \in \mathbb{Z}^d} \int_{\left[ 0, 1 \right]^d} \left| \dfrac{\partial}{\partial \lambda} g_{\lambda, t} \left( x + k \right) \right| dx\\
-    &= \int_{\mathbb{R}^d} \left| \dfrac{\partial}{\partial \lambda} g_{\lambda, t} \left( x \right) \right| dx\\
-    &\leq \int_{\mathbb{R}^d} \left( \dfrac{d}{2 \lambda} + \dfrac{\left\| x \right\|^2}{4 \lambda^2 t} \right) g_{\lambda, t} \left( x \right) dx\\
-    % &= \dfrac{d}{2 \lambda} \int_{\mathbb{R}^d} g_{\lambda, t} \left( x \right) dx + \dfrac{1}{4 \lambda^2 t} \int_{\mathbb{R}^d} \left\| x \right\|^2 g_{\lambda, t} \left( x \right) dx\\
-    &= \dfrac{d}{2 \lambda} + \dfrac{1}{4 \lambda^2 t} 2d \lambda t\\
-    &= \dfrac{d}{\lambda}
+    &= \sum_{k \in \mathbb{Z}^d} \int_{\Omega} \left| \dfrac{\partial}{\partial \lambda} g_{\lambda, t} \left( x + k \right) \right| dx.
   \end{align*}
-  Thus, \eqref{eq:lem-heat-kernel-lip-1} is proved.
+  By Tonelli's theorem, we can interchange the sum and the integral, and we obtain
+  \begin{align*}
+    \left\| \dfrac{\partial}{\partial \lambda} K_{\lambda, t} \right\|_{L^1}
+    &= \int_{\Omega} \sum_{k \in \mathbb{Z}^d} \left| \dfrac{\partial}{\partial \lambda} g_{\lambda, t} \left( x + k \right) \right| dx\\
+    &= \int_{\mathbb{R}^d} \left| \dfrac{\partial}{\partial \lambda} g_{\lambda, t} \left( x + k \right) \right| dx.
+  \end{align*}
+  By using \eqref{eq:lem3-3-1}, we obtain
+  \begin{align*}
+    \left\| \dfrac{\partial}{\partial \lambda} K_{\lambda, t} \right\|_{L^1}
+    &\leq \int_{\mathbb{R}^d} \left( \dfrac{d}{2 \lambda} + \dfrac{\left\| x \right\|^2}{4 \lambda^2 t} \right) g_{\lambda, t} \left( x \right) dx\\
+    &= \dfrac{d}{2 \lambda} + \dfrac{1}{4 \lambda^2 t} 2d \lambda t\\
+    &= \dfrac{d}{\lambda}.
+  \end{align*}
   
   Next, for any $\lambda, \lambda^\prime \in \Lambda$,
   \begin{align*}
@@ -108,7 +122,7 @@ The proof of Theorem \ref{thm:main-theorem} is based on Theorem \ref{thm:stabili
     &= \int_{\lambda^\prime}^\lambda \sum_{k \in \mathbb{Z}^d} \dfrac{\partial}{\partial \lambda^*} g_{\lambda^*, t} \left( x + k \right) d \lambda^*\\
     &= \int_{\lambda^\prime}^\lambda \dfrac{\partial}{\partial \lambda^*} K_{\lambda^*, t} \left( x \right) d \lambda^*.
   \end{align*}
-  Hence, we can obtain
+  Hence, taking the $L^1$ norm of both sides and using Tonelli's theorem, we can obtain
   \begin{align*}
     \left\| K_{\lambda, t} - K_{\lambda^\prime, t} \right\|_{L^1}
     &= \int_{\left[ 0, 1 \right]^d} \left| \int_{\lambda^\prime}^\lambda \dfrac{\partial}{\partial \lambda^*} K_{\lambda^*, t} \left( x \right) d \lambda^* \right| dx\\
