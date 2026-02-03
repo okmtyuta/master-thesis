@@ -1,0 +1,37 @@
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->] (-1,0) -- (8,0) node[below right] {birth};
+    \draw[->] (0,-1) -- (0,8) node[above left] {death};
+    \draw[gray, dashed, line width=0.8pt] (0,0) -- (7.5,7.5) node[above right, black] {$y = x$};
+
+    \newcommand{\pdpoint}[2]{%
+      \fill[accent] (#1,#2) circle (1 mm);
+    }
+    \newcommand{\pdpointv}[2]{%
+      \fill[theme] (#1,#2) circle (1 mm);
+    }
+
+    \pdpoint{1.2}{3.8}
+    \pdpointv{1.8}{3.2}
+
+    \pdpoint{2.0}{5.0}
+    \pdpointv{1}{6.0}
+
+    \pdpoint{4.5}{7.0}
+    \pdpointv{4.0}{7.2}
+
+    \pdpoint{6.0}{7.2}
+
+    \pdpoint{4.2}{2.5}
+    \pdpointv{4.2}{1.0}
+
+    \node[right] at (4.2, 2.5) {$\mathrm{dgm}~f$};
+    \node[right] at (4.2, 1.0) {$\mathrm{dgm}~g$};
+
+    \draw[line width=1.2pt] (1.2, 3.8) -- (1.8, 3.2);
+    \draw[line width=1.2pt] (2.0, 5.0) -- (1.0, 6.0);
+    \draw[line width=1.2pt] (4.5, 7.0) -- (4.0, 7.2);
+    \draw[line width=1.2pt] (6.0, 7.2) -- (6.6, 6.6);
+
+  \end{tikzpicture}
+\end{center}
